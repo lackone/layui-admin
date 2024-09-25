@@ -49,6 +49,24 @@ if (!function_exists('success')) {
     }
 }
 
+if (!function_exists('toList')) {
+    /**
+     * 返回列表
+     */
+    function toList(\Illuminate\Pagination\LengthAwarePaginator $list, $totalRow = [])
+    {
+        $list = $list->toArray();
+        $result = [
+            'code' => 0,
+            'msg' => '',
+            'data' => $list['data'] ?: [],
+            'count' => $list['total'] ?: 0,
+            'totalRow' => $totalRow ?: [],
+        ];
+        return response()->json($result, 200);
+    }
+}
+
 if (!function_exists('error')) {
     /**
      * 错误

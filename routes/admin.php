@@ -6,7 +6,7 @@ Route::group([
     'prefix' => config('admin.route.prefix'),
     'as' => config('admin.route.name'),
     'namespace' => config('admin.route.namespace'),
-    'middleware' => ['web', 'Template'],
+    'middleware' => ['web', 'AdminTemplate'],
 ], function () {
     //test
     Route::any('/test', 'IndexController@test')->name('test');
@@ -18,24 +18,23 @@ Route::group([
     Route::any('/forbidden', 'IndexController@forbidden')->name('forbidden');
     //上传
     Route::any('/upload', 'IndexController@upload')->name('upload');
+    //配置
+    Route::any('/config', 'IndexController@config')->name('config');
 
     Route::group([
         'middleware' => config('admin.route.middleware'),
     ], function () {
         //首页
         Route::any('/', 'IndexController@index')->name('index');
-
         //欢迎
         Route::any('/welcome', 'IndexController@welcome')->name('welcome');
-
-        //修改密码
-        Route::any('/changePassword', 'UserController@changePassword')->name('change_password');
 
         //用户列表
         Route::any('/user/list', 'UserController@list')->name('user.list');
         Route::any('/user/save/{admin?}', 'UserController@save')->name('user.save');
         Route::any('/user/delete', 'UserController@delete')->name('user.delete');
         Route::any('/user/set_role/{admin?}', 'UserController@setRole')->name('user.set_role');
+        Route::any('/user/changePassword', 'UserController@changePassword')->name('user.change_password');
 
         //角色列表
         Route::any('/role/list', 'RoleController@list')->name('role.list');

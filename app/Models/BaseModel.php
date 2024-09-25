@@ -5,12 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use DateTimeInterface;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BaseModel extends Model
 {
+    //use SoftDeletes;
+
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'updated';
+
+    const DELETED_AT = 'deleted';
+
+    protected $connection = 'mysql';
+
+    protected $guarded = ['_token'];
 
     /**
      * 指示模型是否主动维护时间戳。
@@ -34,6 +43,35 @@ class BaseModel extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format($this->getDateFormat());
+    }
+
+    /**
+     * 获取列表
+     * @param $key
+     * @param $value
+     * @param $where
+     * @return array
+     */
+    protected function optionList($key, $value, $where = [])
+    {
+        if (stripos($value, ',') === false) {
+            return $this->where($where)->pluck($value, $key)->toArray();
+        }
+
+        $list = $this->where($where)->get();
+        $data = [];
+        if ($list) {
+            $value = explode(',', $value) ?: [];
+            foreach ($list as $item) {
+                if ($value) {
+                    foreach ($value as $v) {
+                        $data[$item[$key]] .= $item[$v] . '-';
+                    }
+                }
+                $data[$item[$key]] = rtrim($data[$item[$key]], '-');
+            }
+        }
+        return $data;
     }
 
     /**
