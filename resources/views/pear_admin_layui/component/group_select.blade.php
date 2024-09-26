@@ -1,4 +1,4 @@
-<div class="layui-form-item">
+<div class="{{ $is_search ? 'layui-inline' : 'layui-form-item' }}">
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-input-inline">
         <select name="{{ $name }}">

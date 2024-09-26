@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $params = $request->all();
 
-        if ($request->header('table') || $params['export']) {
+        if (adminIsAjax()) {
             $order_field = $params['order_field'] ?: 'id';
             $order = $params['order'] ?: 'desc';
 
@@ -60,44 +60,6 @@ class UserController extends Controller
         }
 
         return view('user.list', compact('params'));
-    }
-
-    /**
-     * 修改密码
-     * @param Request $request
-     */
-    public function changePassword(Request $request)
-    {
-        $params = $request->all();
-
-        if ($request->ajax()) {
-            try {
-                if (!$params['id']) {
-                    throw new \Exception('ID不存在');
-                }
-                $admin = Admin::find($params['id']);
-                if (!$admin) {
-                    throw new \Exception('用户不存在');
-                }
-                if ($admin['status'] == Admin::STATUS_DISABLE) {
-                    throw new \Exception('账号禁用，禁止登录');
-                }
-                if (UserService::makePassword($admin['salt'], $params['password']) != $admin['password']) {
-                    throw new \Exception('旧密码不正确');
-                }
-                if ($params['new_password'] != $params['again_new_password']) {
-                    throw new \Exception('两次新密码不一致');
-                }
-
-                UserService::changePassword($admin['id'], $params['new_password']);
-
-                return success();
-            } catch (\Exception $e) {
-                return error($e->getMessage());
-            }
-        }
-
-        return view('user.change_password');
     }
 
     /**

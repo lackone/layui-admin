@@ -22,4 +22,12 @@ class AdminAuth extends BaseModel
         self::TYPE_MENU => '菜单',
         self::TYPE_BUTTON => '按钮',
     ];
+
+    /**
+     * 获取博客文章的评论
+     */
+    public function children()
+    {
+        return $this->hasMany(AdminAuth::class, 'pid', 'id');
+    }
 }

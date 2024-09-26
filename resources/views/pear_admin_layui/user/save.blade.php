@@ -43,7 +43,7 @@
             var layer = layui.layer;
             var $ = layui.jquery;
 
-            form.on('submit(submit)', function (data) {
+            form.on('submit({{ getDomId() }}_submit)', function (data) {
                 var field = data.field; // 获取表单字段值
                 $.post("{{ route('admin.user.save', $admin['id']) }}", field, function (res) {
                     if (res.code == 200) {

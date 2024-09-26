@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Services\RBACService;
 use App\Models\AdminRole;
 use Illuminate\Http\Request;
+use App\Admin\Exports\RoleExport;
 
 class RoleController extends Controller
 {
@@ -16,30 +17,44 @@ class RoleController extends Controller
     {
         $params = $request->all();
 
-        $list = AdminRole::where(function ($query) use ($params) {
-            if ($params) {
-                foreach ($params as $key => $value) {
-                    if (in_array($key, ['name', 'start_time', 'end_time', 'status']) && $value != '') {
-                        switch ($key) {
-                            case 'name':
-                                $query->where($key, 'like', $value . '%');
-                                break;
-                            case 'start_time':
-                                $query->where('created', '>=', strtotime($value));
-                                break;
-                            case 'end_time':
-                                $query->where('created', '<', strtotime($value));
-                                break;
-                            default:
-                                $query->where($key, $value);
-                                break;
+        if (adminIsAjax()) {
+            $order_field = $params['order_field'] ?: 'id';
+            $order = $params['order'] ?: 'desc';
+
+            $query = AdminRole::where(function ($query) use ($params) {
+                if ($params) {
+                    foreach ($params as $key => $value) {
+                        if (in_array($key, ['name', 'start_time', 'end_time', 'status']) && $value != '') {
+                            switch ($key) {
+                                case 'name':
+                                    $query->where($key, 'like', $value . '%');
+                                    break;
+                                case 'start_time':
+                                    $query->where('created', '>=', strtotime($value));
+                                    break;
+                                case 'end_time':
+                                    $query->where('created', '<', strtotime($value));
+                                    break;
+                                default:
+                                    $query->where($key, $value);
+                                    break;
+                            }
                         }
                     }
                 }
-            }
-        })->orderBy('id', 'desc')->paginate();
+            })->orderBy($order_field, $order);
 
-        return view('role.list', compact('list', 'params'));
+            if ($params['export']) {
+                $now = date('YmdHis');
+                return (new RoleExport($query))->download("role_{$now}");
+            }
+
+            $list = $query->paginate($params['limit'] ?? 10);
+
+            return toList($list);
+        }
+
+        return view('role.list', compact('params'));
     }
 
     /**
@@ -62,9 +77,9 @@ class RoleController extends Controller
                     AdminRole::create($params);
                 }
 
-                return back()->with(['message' => '保存成功']);
+                return success();
             } catch (\Exception $e) {
-                return back()->withErrors([$e->getMessage()]);
+                return error($e->getMessage());
             }
         }
 
@@ -87,7 +102,9 @@ class RoleController extends Controller
                 throw new \Exception('id不能为空');
             }
 
-            AdminRole::where('id', $id)->delete();
+            $id = is_array($id) ? $id : [$id];
+
+            AdminRole::whereIn('id', $id)->delete();
 
             return success();
         } catch (\Exception $e) {

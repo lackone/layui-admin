@@ -215,3 +215,35 @@ if (!function_exists('getWeek')) {
         ];
     }
 }
+
+if (!function_exists('adminIsAjax')) {
+    /**
+     * 后台判断是否是ajax
+     */
+    function adminIsAjax()
+    {
+        $request = request();
+
+        if ($request->header('table') || $request->input('export')) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists('getDomId')) {
+    /**
+     * 获取DOM的ID
+     * @return string
+     */
+    function getDomId()
+    {
+        $request = request();
+
+        $class = $request->route()->getControllerClass();
+        $class = explode('\\', $class) ?: [];
+
+        return (end($class) ?: '') . '_' . $request->route()->getActionMethod();
+    }
+}

@@ -183,14 +183,13 @@ class RBACService
         if ($auth_list) {
             $role = AdminRole::find($role_id);
             $auth_ids = explode(',', $role['auth_ids']) ?: [];
-            foreach ($auth_list as &$value) {
+            foreach ($auth_list as $key => $value) {
                 if (in_array($value['id'], $auth_ids)) {
-                    $value['checked'] = true;
+                    $auth_list[$key]['checked'] = true;
                 } else {
-                    $value['checked'] = false;
+                    $auth_list[$key]['checked'] = false;
                 }
             }
-            unset($value);
         }
         return $auth_list;
     }

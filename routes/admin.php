@@ -34,7 +34,6 @@ Route::group([
         Route::any('/user/save/{admin?}', 'UserController@save')->name('user.save');
         Route::any('/user/delete', 'UserController@delete')->name('user.delete');
         Route::any('/user/set_role/{admin?}', 'UserController@setRole')->name('user.set_role');
-        Route::any('/user/changePassword', 'UserController@changePassword')->name('user.change_password');
 
         //角色列表
         Route::any('/role/list', 'RoleController@list')->name('role.list');

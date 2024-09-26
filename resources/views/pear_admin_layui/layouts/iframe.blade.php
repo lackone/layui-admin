@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="{{ adminAsset('admin/css/other/analysis.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/other/exception.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('component/select2/css/select2.min.css') }}"/>
+    <link rel="stylesheet" href="{{ adminAsset('component/ztree/css/zTreeStyle/zTreeStyle.css') }}"/>
     <style>
         .select2-container--default .select2-selection--multiple {
-            border-color: #eee;
+            border-color: #eee !important;
         }
     </style>
     @yield('mycss')
@@ -27,6 +28,7 @@
     <script src="{{ adminAsset('component/pear/pear.js') }}"></script>
     <script src="{{ adminAsset('component/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ adminAsset('component/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ adminAsset('component/ztree/js/jquery.ztree.all.min.js') }}"></script>
     <script>
         var load_index;
         layui.use(['jquery', 'layer', 'laytpl'], function () {

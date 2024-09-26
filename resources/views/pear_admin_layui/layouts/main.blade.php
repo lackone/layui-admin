@@ -70,12 +70,12 @@
                 limitName: 'limit'
             },
             cellMinWidth: 80,
-            totalRow: true, // 开启合计行
+            totalRow: false, // 开启合计行
             page: true,
             css: [
                 '.layui-table-tool-temp{padding-right: 145px;}'
             ].join(''),
-            defaultToolbar: ['filter', 'print', {
+            defaultToolbar: ['filter', 'exports', 'print', {
                 title: '导出',
                 layEvent: 'custom_export',
                 icon: 'layui-icon layui-icon-export'

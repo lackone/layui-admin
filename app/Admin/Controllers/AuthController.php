@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Services\RBACService;
 use App\Models\AdminAuth;
 use Illuminate\Http\Request;
+use App\Admin\Exports\AuthExport;
 
 class AuthController extends Controller
 {
@@ -16,9 +17,38 @@ class AuthController extends Controller
     {
         $params = $request->all();
 
-        $auth_list = RBACService::allAuthList();
+        if (adminIsAjax()) {
+            $order_field = $params['order_field'] ?: 'id';
+            $order = $params['order'] ?: 'desc';
 
-        return view('auth.list', compact('auth_list', 'params'));
+            $query = AdminAuth::with(['children' => function ($query) {
+                $query->orderBy('sort', 'asc')->orderBy('id', 'asc');
+            }, 'children.children' => function ($query) {
+                $query->orderBy('sort', 'asc')->orderBy('id', 'asc');
+            }])->where(function ($query) use ($params) {
+                $query->where('pid', 0);
+                if ($params) {
+                    foreach ($params as $key => $value) {
+                        if (in_array($key, ['title', 'status']) && $value != '') {
+                            switch ($key) {
+                                case 'title':
+                                    $query->where($key, 'like', $value . '%');
+                                    break;
+                                default:
+                                    $query->where($key, $value);
+                                    break;
+                            }
+                        }
+                    }
+                }
+            })->orderBy($order_field, $order);
+
+            $list = $query->paginate($params['limit'] ?? 10);
+
+            return toList($list);
+        }
+
+        return view('auth.list', compact('params'));
     }
 
     /**
@@ -33,6 +63,10 @@ class AuthController extends Controller
             try {
                 if (!$params['name']) {
                     throw new \Exception('规则名不能为空');
+                }
+
+                if ($params['icon']) {
+                    $params['icon'] = 'layui-icon ' . str_replace('layui-icon ', '', $params['icon']);
                 }
 
                 if ($auth['id']) {
@@ -76,7 +110,9 @@ class AuthController extends Controller
                 throw new \Exception('id不能为空');
             }
 
-            AdminAuth::where('id', $id)->delete();
+            $id = is_array($id) ? $id : [$id];
+
+            AdminAuth::whereIn('id', $id)->delete();
 
             return success();
         } catch (\Exception $e) {
