@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ adminAsset('admin/css/admin.dark.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/variables.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/reset.css') }}"/>
-    <link rel="stylesheet" href="{{ adminAsset('admin/css/other/result.css') }}" />
+    <link rel="stylesheet" href="{{ adminAsset('admin/css/other/result.css') }}"/>
 </head>
 <!-- 结 构 代 码 -->
 <body class="layui-layout-body pear-admin">
@@ -98,13 +98,13 @@
             dataType: 'json'
         });
 
-        $(document).ajaxStart(function() {
+        $(document).ajaxStart(function () {
             load_index = layer.load(2, {
                 shade: [0.1, '#000'] //0.1透明度的白色背景
             });
         });
 
-        $(document).ajaxStop(function() {
+        $(document).ajaxStop(function () {
             layer.close(load_index);
         });
 

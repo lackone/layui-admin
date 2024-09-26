@@ -1,7 +1,8 @@
 <div class="{{ $is_search ? 'layui-inline' : 'layui-form-item' }}">
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-input-inline">
-        <input type="text" name="{{ $name }}" value="{{ $value }}" id="{{ getDomId() }}_{{ $name }}_iconPicker" lay-filter="iconPicker" style="display:none;">
+        <input type="text" name="{{ $name }}" value="{{ $value }}" id="{{ getDomId() }}_{{ $name }}_iconPicker"
+               lay-filter="iconPicker" style="display:none;">
     </div>
 </div>
 <script>

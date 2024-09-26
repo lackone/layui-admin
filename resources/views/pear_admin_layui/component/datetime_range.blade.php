@@ -2,11 +2,13 @@
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-inline" id="{{ getDomId() }}_{{ $name }}_laydate_datetime_range">
         <div class="layui-input-inline">
-            <input type="text" autocomplete="off" name="start_{{ $name }}" value="{{ $value['start'] }}" id="{{ getDomId() }}_{{ $name }}_start" lay-affix="clear" class="layui-input" placeholder="开始时间">
+            <input type="text" autocomplete="off" name="start_{{ $name }}" value="{{ $value['start'] }}"
+                   id="{{ getDomId() }}_{{ $name }}_start" lay-affix="clear" class="layui-input" placeholder="开始时间">
         </div>
         <div class="layui-form-mid">-</div>
         <div class="layui-input-inline">
-            <input type="text" autocomplete="off" name="end_{{ $name }}" value="{{ $value['end'] }}" id="{{ getDomId() }}_{{ $name }}_end" lay-affix="clear" class="layui-input" placeholder="结束时间">
+            <input type="text" autocomplete="off" name="end_{{ $name }}" value="{{ $value['end'] }}"
+                   id="{{ getDomId() }}_{{ $name }}_end" lay-affix="clear" class="layui-input" placeholder="结束时间">
         </div>
     </div>
 </div>

@@ -11,7 +11,8 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body">
-                    <h3>您好！{{ session('admin_info.real_name') ?: session('admin_info.account') }} [{{ implode(', ', $role_name) }}]，当前时间：{{ date('Y-m-d H:i:s') }}</h3>
+                    <h3>您好！{{ session('admin_info.real_name') ?: session('admin_info.account') }}
+                        [{{ implode(', ', $role_name) }}]，当前时间：{{ date('Y-m-d H:i:s') }}</h3>
                 </div>
             </div>
         </div>

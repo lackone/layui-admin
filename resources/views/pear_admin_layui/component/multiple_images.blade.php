@@ -7,7 +7,8 @@
             </button>
             <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top:11px;">
                 预览图：
-                <div class="layui-upload-list" id="{{ getDomId() }}_{{ rtrim($name, '[]') }}_multiple_images_preview"></div>
+                <div class="layui-upload-list"
+                     id="{{ getDomId() }}_{{ rtrim($name, '[]') }}_multiple_images_preview"></div>
             </blockquote>
         </div>
         <div id="{{ getDomId() }}_{{ rtrim($name, '[]') }}_multiple_images_vals">

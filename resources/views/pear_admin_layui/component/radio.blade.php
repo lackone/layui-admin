@@ -3,7 +3,8 @@
     <div class="layui-inline">
         @if($list)
             @foreach($list as $k => $v)
-                <input type="radio" name="{{ $name }}" value="{{ $k }}" title="{{ $v }}" {{ $k == $value ? 'checked' : '' }}>
+                <input type="radio" name="{{ $name }}" value="{{ $k }}"
+                       title="{{ $v }}" {{ $k == $value ? 'checked' : '' }}>
             @endforeach
         @endif
     </div>
