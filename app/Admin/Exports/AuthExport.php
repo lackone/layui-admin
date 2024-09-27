@@ -2,8 +2,6 @@
 
 namespace App\Admin\Exports;
 
-use App\Models\AdminRole;
-
 class AuthExport extends ExportXls
 {
     /**
