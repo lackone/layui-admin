@@ -6,10 +6,25 @@
     <meta name="keywords" content="{{ cfg('website', 'admin_keywords') }}">
     <meta name="description" content="{{ cfg('website', 'admin_description') }}">
     <title>登录 - {{ cfg('website', 'admin_title') }}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ cfg('website', 'admin_ico') ?: config('admin.default_icon') }}">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="{{ cfg('website', 'admin_ico') ?: config('admin.default_icon') }}">
     <link rel="stylesheet" href="{{ adminAsset('component/pear/css/pear.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/other/login.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/variables.css') }}"/>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .background {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
     <script>
         if (window.self != window.top) {
             top.location.reload();
@@ -20,14 +35,16 @@
 <div class="login-page" style="background-image: url({{ adminAsset('admin/images/background.svg') }})">
     <div class="layui-row">
         <div class="layui-col-sm6 login-bg layui-hide-xs">
-            <img class="login-bg-img" src="{{ cfg('website', 'admin_login_banner') ?: config('admin.default_login_banner') }}" alt=""/>
+            <img class="login-bg-img"
+                 src="{{ cfg('website', 'admin_login_banner') ?: config('admin.default_login_banner') }}" alt=""/>
         </div>
         <div class="layui-col-sm6 layui-col-xs12 login-form">
             <div class="layui-form">
                 <div class="form-center">
                     <div class="form-center-box">
                         <div class="top-log-title">
-                            <img class="top-log" src="{{ cfg('website', 'admin_logo') ?: config('admin.default_logo') }}" alt=""/>
+                            <img class="top-log"
+                                 src="{{ cfg('website', 'admin_logo') ?: config('admin.default_logo') }}" alt=""/>
                             <span>{{ cfg('website', 'admin_login_title') ?: config('admin.default_login_title') }}</span>
                         </div>
                         <div class="top-desc">
@@ -65,10 +82,28 @@
         </div>
     </div>
 </div>
+<canvas class="background"></canvas>
+<script src="{{ adminAsset('component/particles/particles.min.js') }}"></script>
 <!-- 资 源 引 入 -->
 <script src="{{ adminAsset('component/layui/layui.js') }}"></script>
 <script src="{{ adminAsset('component/pear/pear.js') }}"></script>
 <script>
+    window.onload = function () {
+        Particles.init({
+            selector: '.background',
+            color: ['#DA0463', '#404B69', '#DBEDF3'],
+            connectParticles: true,
+            responsive: [{
+                breakpoint: 800,
+                options: {
+                    color: '#00C9B1',
+                    maxParticles: 80,
+                    connectParticles: false
+                }
+            }]
+        });
+    };
+
     layui.use(['form', 'button', 'popup', 'jquery'], function () {
         var form = layui.form;
         var button = layui.button;
