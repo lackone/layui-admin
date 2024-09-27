@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ adminAsset('admin/css/variables.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/reset.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/other/result.css') }}"/>
+    <script src="{{ adminAsset('component/wangeditor/wangEditor.min.js') }}"></script>
 </head>
 <!-- 结 构 代 码 -->
 <body class="layui-layout-body pear-admin">
@@ -45,6 +46,7 @@
 <!-- 依 赖 脚 本 -->
 <script src="{{ adminAsset('component/layui/layui.js') }}"></script>
 <script src="{{ adminAsset('component/pear/pear.js') }}"></script>
+<script src="{{ adminAsset('component/jquery/jquery-3.7.1.min.js') }}"></script>
 <!-- 框 架 初 始 化 -->
 <script>
     var load_index;
@@ -55,6 +57,26 @@
         var layer = layui.layer;
         var laytpl = layui.laytpl;
         var table = layui.table;
+
+        // yml | json | api
+        admin.setConfigurationPath("{{ route('admin.config') }}");
+
+        // 渲染
+        admin.render();
+
+        // 注销
+        admin.logout(function () {
+            $.get("{{ route('admin.logout') }}", function () {
+                popup.success("退出登录", function () {
+                    location.href = "{{ route('admin.login') }}";
+                });
+
+                // 清空 tabs 缓存
+                return new Promise((resolve) => {
+                    resolve(true)
+                });
+            });
+        });
 
         // 模板设置
         laytpl.config({
@@ -91,8 +113,7 @@
             //请求头添加参数
             headers: {
                 //请求头防止csrf攻击(参考php框架laravel)
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'xxx': 'xxx'
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             //统一返回类型
             dataType: 'json'
@@ -114,26 +135,6 @@
 
         $(document).ajaxError(function (evt, request, settings) {
             layer.close(load_index);
-        });
-
-        // yml | json | api
-        admin.setConfigurationPath("{{ route('admin.config') }}");
-
-        // 渲染
-        admin.render();
-
-        // 注销
-        admin.logout(function () {
-            $.get("{{ route('admin.logout') }}", function () {
-                popup.success("退出登录", function () {
-                    location.href = "{{ route('admin.login') }}";
-                });
-
-                // 清空 tabs 缓存
-                return new Promise((resolve) => {
-                    resolve(true)
-                });
-            });
         });
     })
 </script>

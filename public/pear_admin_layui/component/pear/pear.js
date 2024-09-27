@@ -5,6 +5,8 @@ window.rootPath = (function (src) {
 	return src.substring(0, src.lastIndexOf("/") + 1);
 })();
 
+console.log(rootPath + "module/");
+
 layui.config({
 	base: rootPath + "module/",
 	version: "4.0.3"

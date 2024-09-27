@@ -5,7 +5,6 @@ namespace App\Admin\Controllers;
 use App\Admin\Services\RBACService;
 use App\Models\AdminAuth;
 use Illuminate\Http\Request;
-use App\Admin\Exports\AuthExport;
 
 class AuthController extends Controller
 {
@@ -24,6 +23,8 @@ class AuthController extends Controller
             $query = AdminAuth::with(['children' => function ($query) {
                 $query->orderBy('sort', 'asc')->orderBy('id', 'asc');
             }, 'children.children' => function ($query) {
+                $query->orderBy('sort', 'asc')->orderBy('id', 'asc');
+            }, 'children.children.children' => function ($query) {
                 $query->orderBy('sort', 'asc')->orderBy('id', 'asc');
             }])->where(function ($query) use ($params) {
                 $query->where('pid', 0);

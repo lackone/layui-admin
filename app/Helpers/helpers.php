@@ -247,3 +247,30 @@ if (!function_exists('getDomId')) {
         return (end($class) ?: '') . '_' . $request->route()->getActionMethod();
     }
 }
+
+if (!function_exists('getDomIdKey')) {
+    /**
+     * 获取DOM前缀
+     */
+    function getDomIdKey($name = '', $suffix = '', $append = '')
+    {
+        $id = getDomId();
+        if ($name) {
+            $name = str_replace('[]', '', $name);
+            $name = str_replace(['["', '"]', '[\'', '\']', '[', ']'], '_', $name);
+        }
+        return $id . ($name ? '_' . trim($name, '_') : '') . ($suffix ? '_' . trim($suffix, '_') : '') . ($append ? '_' . trim($append, '_') : '');
+    }
+}
+
+if (!function_exists('isJson')) {
+    /**
+     * 判断是不是json
+     * @param $string
+     */
+    function isJson($string)
+    {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
+    }
+}

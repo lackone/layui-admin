@@ -122,11 +122,42 @@ class IndexController extends Controller
         if ($request->hasFile('file')) {
             $path = $request->file->store(date('Ym') . '/' . date('d'), 'uploads');
             $path = '/uploads/' . ltrim($path, '/');
+
+            if ($request->header('wangEditor')) {
+                return response()->json([
+                    'errno' => 0,
+                    'data' => [['url' => $path]],
+                ]);
+            }
+
             return success([
                 'ext' => $request->file->extension(),
                 'path' => $path,
                 'url' => asset($path),
+                'name' => $request->file->getClientOriginalName(),
+                'size' => $request->file->getSize(),
             ]);
+        }
+
+        $data = [];
+        for ($i = 1; $i <= 5; $i++) {
+            $key = 'file' . $i;
+            if ($request->hasFile($key)) {
+                $path = $request->{$key}->store(date('Ym') . '/' . date('d'), 'uploads');
+                $path = '/uploads/' . ltrim($path, '/');
+
+                $data[] = [
+                    'url' => $path,
+                ];
+            }
+        }
+        if ($data) {
+            if ($request->header('wangEditor')) {
+                return response()->json([
+                    'errno' => 0,
+                    'data' => $data,
+                ]);
+            }
         }
 
         return error('请重新上传文件');

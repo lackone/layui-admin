@@ -23,7 +23,7 @@
             var layer = layui.layer;
             var $ = layui.jquery;
 
-            form.on('submit({{ getDomId() }}_submit)', function (data) {
+            form.on('submit({{ getDomIdKey('', 'submit') }})', function (data) {
                 var field = data.field; // 获取表单字段值
                 $.post("{{ route('admin.role.save', $role['id']) }}", field, function (res) {
                     if (res.code == 200) {

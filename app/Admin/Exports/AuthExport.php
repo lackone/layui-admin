@@ -15,12 +15,7 @@ class AuthExport extends ExportXls
     public function map($model, $key = ''): array
     {
         return [
-            $model['id'],
-            $model['name'],
-            AdminRole::$statusList[$model['status']],
-            $model['remark'],
-            $model['created'],
-            $model['updated'],
+
         ];
     }
 
@@ -32,12 +27,7 @@ class AuthExport extends ExportXls
     public function headings(): array
     {
         return [
-            'ID',
-            '角色名',
-            '状态',
-            '备注',
-            '创建时间',
-            '更新时间',
+
         ];
     }
 }

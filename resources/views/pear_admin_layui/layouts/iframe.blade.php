@@ -29,6 +29,7 @@
     <script src="{{ adminAsset('component/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ adminAsset('component/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ adminAsset('component/ztree/js/jquery.ztree.all.min.js') }}"></script>
+    <script src="{{ adminAsset('component/wangeditor/wangEditor.min.js') }}"></script>
     <script>
         var load_index;
         layui.use(['jquery', 'layer', 'laytpl'], function () {

@@ -2,6 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Admin;
+use App\Models\AdminAuth;
+use App\Models\AdminRole;
+use App\Models\Config;
+use App\Models\Dict;
+use App\Observers\AdminAuthObserver;
+use App\Observers\AdminObserver;
+use App\Observers\AdminRoleObserver;
+use App\Observers\ConfigObserver;
+use App\Observers\DictObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -29,5 +39,11 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(99999)->by($request->user()?->id ?: $request->ip());
         });
+
+        AdminAuth::observe(AdminAuthObserver::class);
+        AdminRole::observe(AdminRoleObserver::class);
+        Admin::observe(AdminObserver::class);
+        Config::observe(ConfigObserver::class);
+        Dict::observe(DictObserver::class);
     }
 }

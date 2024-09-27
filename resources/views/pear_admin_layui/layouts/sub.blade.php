@@ -28,7 +28,6 @@
     @yield('content')
 </div>
 @yield('js')
-<script></script>
 @yield('myjs')
 </body>
 </html>

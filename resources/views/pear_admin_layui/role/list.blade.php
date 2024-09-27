@@ -3,7 +3,7 @@
 @section('content')
     <div class="layui-card">
         <div class="layui-card-body">
-            <form class="layui-form layui-row layui-col-space16" lay-filter="{{ getDomId() }}_filter">
+            <form class="layui-form layui-row layui-col-space16" lay-filter="{{ getDomIdKey('', 'table_filter') }}">
                 <div class="layui-form-item">
                     @include('component.text', ['label' => '角色名', 'name' => 'name', 'is_search' => 1])
 
@@ -12,29 +12,30 @@
                     @include('component.submit', ['is_search' => 1])
                 </div>
             </form>
-            <table class="layui-hide" id="{{ getDomId() }}" lay-filter="{{ getDomId() }}"></table>
+            <table class="layui-hide" id="{{ getDomIdKey('', 'table') }}"
+                   lay-filter="{{ getDomIdKey('', 'table') }}"></table>
         </div>
     </div>
 @endsection
 
-@section('js')
-    <script type="text/html" id="{{ getDomId() }}_toolbar">
+@section('myjs')
+    <script type="text/html" id="{{ getDomIdKey('', 'toolbar') }}">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-sm" id="{{ getDomId() }}_dropdownButton">
+            <button class="layui-btn layui-btn-sm" id="{{ getDomIdKey('', 'dropdownButton') }}">
                 操作
                 <i class="layui-icon layui-icon-down layui-font-12"></i>
             </button>
-            <button class="layui-btn layui-btn-sm" id="{{ getDomId() }}_reload">
+            <button class="layui-btn layui-btn-sm" id="{{ getDomIdKey('', 'reload') }}">
                 刷新数据
                 <i class="layui-icon layui-icon-down layui-font-12"></i>
             </button>
-            <button class="layui-btn layui-btn-sm layui-btn-primary" id="{{ getDomId() }}_rowMode">
+            <button class="layui-btn layui-btn-sm layui-btn-primary" id="{{ getDomIdKey('', 'rowMode') }}">
                 <span><%= d.lineStyle ? '多行' : '单行' %>模式</span>
                 <i class="layui-icon layui-icon-down layui-font-12"></i>
             </button>
         </div>
     </script>
-    <script type="text/html" id="{{ getDomId() }}_bar">
+    <script type="text/html" id="{{ getDomIdKey('', 'bar') }}">
         <div class="layui-clear-space">
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs" lay-event="more">
@@ -52,9 +53,9 @@
             var $ = layui.jquery;
 
             // 搜索提交
-            form.on('submit({{ getDomId() }}_search)', function (data) {
+            form.on('submit({{ getDomIdKey('', 'search') }})', function (data) {
                 var field = data.field; // 获得表单字段
-                table.reload('{{ getDomId() }}', {
+                table.reload('{{ getDomIdKey('', 'table') }}', {
                     page: {
                         curr: 1 // 重新从第 1 页开始
                     },
@@ -65,9 +66,9 @@
 
             // 创建渲染实例
             table.render({
-                elem: '#{{ getDomId() }}',
+                elem: '#{{ getDomIdKey('', 'table') }}',
                 url: '{{ route('admin.role.list') }}',
-                toolbar: '#{{ getDomId() }}_toolbar',
+                toolbar: '#{{ getDomIdKey('', 'toolbar') }}',
                 cols: [[
                     {
                         type: 'checkbox',
@@ -121,28 +122,28 @@
                         title: '操作',
                         width: 134,
                         minWidth: 125,
-                        toolbar: '#{{ getDomId() }}_bar'
+                        toolbar: '#{{ getDomIdKey('', 'bar') }}'
                     }
                 ]],
                 done: function () {
                     var id = this.id;
                     dropdown.render({
-                        elem: '#{{ getDomId() }}_dropdownButton',
+                        elem: '#{{ getDomIdKey('', 'dropdownButton') }}',
                         data: [{
-                            id: '{{ getDomId() }}_add',
+                            id: '{{ getDomIdKey('', 'add') }}',
                             title: '添加'
                         }, {
-                            id: '{{ getDomId() }}_update',
+                            id: '{{ getDomIdKey('', 'update') }}',
                             title: '编辑'
                         }, {
-                            id: '{{ getDomId() }}_delete',
+                            id: '{{ getDomIdKey('', 'delete') }}',
                             title: '删除'
                         }],
                         click: function (obj) {
                             var checkStatus = table.checkStatus(id)
                             var data = checkStatus.data; // 获取选中的数据
                             switch (obj.id) {
-                                case '{{ getDomId() }}_add':
+                                case '{{ getDomIdKey('', 'add') }}':
                                     layer.open({
                                         title: '添加',
                                         type: 2,
@@ -150,7 +151,7 @@
                                         content: '{{ route('admin.role.save') }}'
                                     });
                                     break;
-                                case '{{ getDomId() }}_update':
+                                case '{{ getDomIdKey('', 'update') }}':
                                     if (data.length !== 1) {
                                         return layer.msg('请选择一行');
                                     }
@@ -161,7 +162,7 @@
                                         content: '{{ route('admin.role.save') }}/' + data[0].id
                                     });
                                     break;
-                                case '{{ getDomId() }}_delete':
+                                case '{{ getDomIdKey('', 'delete') }}':
                                     if (data.length === 0) {
                                         return layer.msg('请选择一行');
                                     }
@@ -186,17 +187,17 @@
 
                     // 重载
                     dropdown.render({
-                        elem: '#{{ getDomId() }}_reload',
+                        elem: '#{{ getDomIdKey('', 'reload') }}',
                         data: [{
-                            id: '{{ getDomId() }}_reloadData',
+                            id: '{{ getDomIdKey('', 'reloadData') }}',
                             title: '刷新数据'
                         }],
                         click: function (obj) {
-                            var field = form.val('{{ getDomId() }}_filter');
+                            var field = form.val('{{ getDomIdKey('', 'table_filter') }}');
                             switch (obj.id) {
-                                case '{{ getDomId() }}_reloadData':
+                                case '{{ getDomIdKey('', 'reloadData') }}':
                                     // 数据重载 - 参数重置
-                                    table.reloadData('{{ getDomId() }}', {
+                                    table.reloadData('{{ getDomIdKey('', 'table') }}', {
                                         where: field,
                                         scrollPos: 'fixed',  // 保持滚动条位置不变 - v2.7.3 新增
                                     });
@@ -207,26 +208,26 @@
 
                     // 行模式
                     dropdown.render({
-                        elem: '#{{ getDomId() }}_rowMode',
+                        elem: '#{{ getDomIdKey('', 'rowMode') }}',
                         data: [{
-                            id: '{{ getDomId() }}_default_row',
+                            id: '{{ getDomIdKey('', 'default_row') }}',
                             title: '单行模式'
                         }, {
-                            id: '{{ getDomId() }}_multi_row',
+                            id: '{{ getDomIdKey('', 'multi_row') }}',
                             title: '多行模式'
                         }],
                         click: function (obj) {
                             var checkStatus = table.checkStatus(id)
                             var data = checkStatus.data; // 获取选中的数据
                             switch (obj.id) {
-                                case '{{ getDomId() }}_default_row':
-                                    table.reload('{{ getDomId() }}', {
+                                case '{{ getDomIdKey('', 'default_row') }}':
+                                    table.reload('{{ getDomIdKey('', 'table') }}', {
                                         lineStyle: null // 恢复单行
                                     });
                                     layer.msg('已设为单行');
                                     break;
-                                case '{{ getDomId() }}_multi_row':
-                                    table.reload('{{ getDomId() }}', {
+                                case '{{ getDomIdKey('', 'multi_row') }}':
+                                    table.reload('{{ getDomIdKey('', 'table') }}', {
                                         lineStyle: 'height: 95px;'
                                     });
                                     layer.msg('已设为多行');
@@ -241,31 +242,31 @@
             });
 
             // 触发排序事件
-            table.on('sort({{ getDomId() }})', function (obj) {
-                var field = form.val('{{ getDomId() }}_filter');
+            table.on('sort({{ getDomIdKey('', 'table') }})', function (obj) {
+                var field = form.val('{{ getDomIdKey('', 'table_filter') }}');
                 field["order_field"] = obj.field;
                 field["order"] = obj.type;
-                table.reload('{{ getDomId() }}', {
+                table.reload('{{ getDomIdKey('', 'table') }}', {
                     initSort: obj, // 记录初始排序，如果不设的话，将无法标记表头的排序状态。
                     where: field
                 });
             });
 
             // 工具栏事件
-            table.on('toolbar({{ getDomId() }})', function (obj) {
+            table.on('toolbar({{ getDomIdKey('', 'table') }})', function (obj) {
                 var id = obj.config.id;
                 var checkStatus = table.checkStatus(id);
                 var othis = lay(this);
                 switch (obj.event) {
                     case 'custom_export':
-                        var field = form.val('{{ getDomId() }}_filter');
+                        var field = form.val('{{ getDomIdKey('', 'table_filter') }}');
                         location.href = '{{ route('admin.role.list') }}?export=1&' + $.param(field);
                         break;
                 }
             });
 
             // 表头自定义元素工具事件 --- 2.8.8+
-            table.on('colTool({{ getDomId() }})', function (obj) {
+            table.on('colTool({{ getDomIdKey('', 'table') }})', function (obj) {
                 var event = obj.event;
                 if (event === 'email-tips') {
                     layer.alert(layui.util.escape(JSON.stringify(obj.col)), {
@@ -275,7 +276,7 @@
             });
 
             // 触发单元格工具事件
-            table.on('tool({{ getDomId() }})', function (obj) { // 双击 toolDouble
+            table.on('tool({{ getDomIdKey('', 'table') }})', function (obj) { // 双击 toolDouble
                 var data = obj.data; // 获得当前行数据
                 if (obj.event === 'edit') {
                     layer.open({
@@ -291,10 +292,10 @@
                         show: true, // 外部事件触发即显示
                         data: [{
                             title: '删除',
-                            id: '{{ getDomId() }}_del'
+                            id: '{{ getDomIdKey('', 'del') }}'
                         }],
                         click: function (menudata) {
-                            if (menudata.id === '{{ getDomId() }}_del') {
+                            if (menudata.id === '{{ getDomIdKey('', 'del') }}') {
                                 layer.confirm('真的删除行 [id: ' + data.id + '] 么', function (index) {
                                     $.post('{{ route('admin.role.delete') }}', {
                                         id: data.id
@@ -316,22 +317,22 @@
             });
 
             // 触发表格复选框选择
-            table.on('checkbox({{ getDomId() }})', function (obj) {
+            table.on('checkbox({{ getDomIdKey('', 'table') }})', function (obj) {
                 console.log(obj)
             });
 
             // 触发表格单选框选择
-            table.on('radio({{ getDomId() }})', function (obj) {
+            table.on('radio({{ getDomIdKey('', 'table') }})', function (obj) {
                 console.log(obj)
             });
 
             // 行单击事件
-            table.on('row({{ getDomId() }})', function (obj) {
+            table.on('row({{ getDomIdKey('', 'table') }})', function (obj) {
                 console.log(obj);
             });
 
             // 行双击事件
-            table.on('rowDouble({{ getDomId() }})', function (obj) {
+            table.on('rowDouble({{ getDomIdKey('', 'table') }})', function (obj) {
                 console.log(obj);
             });
         });

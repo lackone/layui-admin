@@ -162,7 +162,7 @@
     </div>
 @endsection
 
-@section('js')
+@section('myjs')
     <script>
         layui.use(['layer', 'echarts', 'element', 'count'], function () {
             var $ = layui.jquery,
@@ -245,7 +245,4 @@
             }
         });
     </script>
-@endsection
-
-@section('myjs')
 @endsection

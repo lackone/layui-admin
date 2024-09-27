@@ -1,7 +1,7 @@
 <div class="{{ $is_search ? 'layui-inline' : 'layui-form-item' }}">
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-input-block">
-        <div id="{{ getDomId() }}_{{ $name }}_tree"></div>
+        <div id="{{ getDomIdKey($name, 'tree') }}"></div>
     </div>
     <input type="hidden" name="{{ $name }}" value="">
 </div>
@@ -52,9 +52,9 @@
             return ids;
         }
 
-        trees['{{ getDomId() }}_{{ $name }}_tree'] = tree.render({
-            elem: '#{{ getDomId() }}_{{ $name }}_tree',
-            id: '{{ getDomId() }}_{{ $name }}_tree',
+        trees['{{ getDomIdKey($name, 'tree') }}'] = tree.render({
+            elem: '#{{ getDomIdKey($name, 'tree') }}',
+            id: '{{ getDomIdKey($name, 'tree') }}',
             data: data,
             showCheckbox: true,  // 是否显示复选框
             onlyIconControl: true,  // 是否仅允许节点左侧图标控制展开收缩
@@ -71,7 +71,7 @@
         });
 
         function flushData() {
-            let role_tree = trees['{{ getDomId() }}_{{ $name }}_tree'];
+            let role_tree = trees['{{ getDomIdKey($name, 'tree') }}'];
             if (role_tree &&
                 role_tree.hasOwnProperty('getChecked')
             ) {

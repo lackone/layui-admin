@@ -45,7 +45,13 @@ Route::group([
         Route::any('/auth/save/{auth?}', 'AuthController@save')->name('auth.save');
         Route::any('/auth/delete', 'AuthController@delete')->name('auth.delete');
 
+        //字典列表
+        Route::any('/dict/list', 'DictController@list')->name('dict.list');
+        Route::any('/dict/save/{dict?}', 'DictController@save')->name('dict.save');
+        Route::any('/dict/delete', 'DictController@delete')->name('dict.delete');
 
+        //网站设置
+        Route::any('/config/website', 'ConfigController@website')->name('config.website');
     });
 });
 

@@ -1,13 +1,13 @@
 <div class="{{ $is_search ? 'layui-inline' : 'layui-form-item' }}">
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-input-block">
-        <div id="{{ getDomId() }}_{{ $name }}_tree" class="ztree"></div>
+        <div id="{{ getDomIdKey($name, 'ztree') }}" class="ztree"></div>
     </div>
     <input type="hidden" name="{{ $name }}" value="">
 </div>
 <script>
     var trees = {};
-    trees['{{ getDomId() }}_{{ $name }}_tree'] = $.fn.zTree.init($("#{{ getDomId() }}_{{ $name }}_tree"), {
+    trees['{{ getDomIdKey($name, 'ztree') }}'] = $.fn.zTree.init($("#{{ getDomIdKey($name, 'ztree') }}"), {
         view: {
             showIcon: true,
         },
@@ -41,14 +41,14 @@
     }, JSON.parse('{!! jsonEncode($list) !!}'));
 
     function onNodeCheck(event, treeId, treeNode) {
-        let nodes = trees['{{ getDomId() }}_{{ $name }}_tree'].getCheckedNodes(true);
+        let nodes = trees['{{ getDomIdKey($name, 'ztree') }}'].getCheckedNodes(true);
         let ids = nodes.map(function (node) {
             return node.id;
         });
         $("input[name='{{ $name }}']").val(ids.join(','));
     }
 
-    trees['{{ getDomId() }}_{{ $name }}_tree'].expandAll(true);
+    trees['{{ getDomIdKey($name, 'ztree') }}'].expandAll(true);
 
     onNodeCheck();
 </script>

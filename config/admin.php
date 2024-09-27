@@ -62,7 +62,7 @@ return [
             //是否开启多选项卡
             'enable' => true,
             //保持视图状态
-            'keepState' => false,
+            'keepState' => true,
             //开启选项卡记忆
             'session' => true,
             //浏览器刷新时是否预加载非激活标签页

@@ -1,8 +1,8 @@
 <div class="{{ $is_search ? 'layui-inline' : 'layui-form-item' }}">
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-input-inline">
-        <input type="text" name="{{ $name }}" value="{{ $value }}" id="{{ getDomId() }}_{{ $name }}_iconPicker"
-               lay-filter="iconPicker" style="display:none;">
+        <input type="text" name="{{ $name }}" value="{{ $value }}" id="{{ getDomIdKey($name, 'iconPicker') }}"
+               lay-filter="{{ getDomIdKey($name, 'iconPicker_filter') }}" style="display:none;">
     </div>
 </div>
 <script>
@@ -10,7 +10,7 @@
         var iconPicker = layui.iconPicker;
 
         iconPicker.render({
-            elem: '#{{ getDomId() }}_{{ $name }}_iconPicker',
+            elem: '#{{ getDomIdKey($name, 'iconPicker') }}',
             type: 'fontClass',
             search: true,
             page: true,
@@ -27,6 +27,6 @@
             }
         });
 
-        iconPicker.checkIcon('iconPicker', '{{ str_replace('layui-icon ', '', $value) }}');
+        iconPicker.checkIcon('{{ getDomIdKey($name, 'iconPicker_filter') }}', '{{ str_replace('layui-icon ', '', $value) }}');
     });
 </script>
