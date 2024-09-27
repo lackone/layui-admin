@@ -39,7 +39,7 @@
                  src="{{ cfg('website', 'admin_login_banner') ?: config('admin.default_login_banner') }}" alt=""/>
         </div>
         <div class="layui-col-sm6 layui-col-xs12 login-form">
-            <div class="layui-form">
+            <div class="layui-form" style="z-index:999">
                 <div class="form-center">
                     <div class="form-center-box">
                         <div class="top-log-title">
