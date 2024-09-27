@@ -16,17 +16,23 @@
 
                             <h3 style="margin-bottom:15px;">后台设置</h3>
 
-                            @include('component.text', ['label' => '网站title', 'name' => 'config[website][admin_title]', 'value' => $config['website']['admin_title'], 'block' => 1])
+                            @include('component.text', ['label' => '首页标题', 'name' => 'config[website][admin_index_title]', 'value' => $config['website']['admin_index_title'], 'block' => 1])
 
-                            @include('component.text', ['label' => '网站keywords', 'name' => 'config[website][admin_keywords]', 'value' => $config['website']['admin_keywords'], 'block' => 1])
+                            @include('component.text', ['label' => 'title', 'name' => 'config[website][admin_title]', 'value' => $config['website']['admin_title'], 'block' => 1])
 
-                            @include('component.text', ['label' => '网站description', 'name' => 'config[website][admin_description]', 'value' => $config['website']['admin_description'], 'block' => 1])
+                            @include('component.text', ['label' => 'keywords', 'name' => 'config[website][admin_keywords]', 'value' => $config['website']['admin_keywords'], 'block' => 1])
+
+                            @include('component.text', ['label' => 'description', 'name' => 'config[website][admin_description]', 'value' => $config['website']['admin_description'], 'block' => 1])
 
                             @include('component.single_image', ['label' => '网站ico', 'name' => 'config[website][admin_ico]', 'value' => $config['website']['admin_ico']])
 
                             @include('component.single_image', ['label' => '网站logo', 'name' => 'config[website][admin_logo]', 'value' => $config['website']['admin_logo']])
 
-                            @include('component.single_image', ['label' => '网站登录页banner', 'name' => 'config[website][admin_login_banner]', 'value' => $config['website']['admin_login_banner']])
+                            @include('component.single_image', ['label' => '登录页banner', 'name' => 'config[website][admin_login_banner]', 'value' => $config['website']['admin_login_banner']])
+
+                            @include('component.text', ['label' => '登录页标题', 'name' => 'config[website][admin_login_title]', 'value' => $config['website']['admin_login_title'], 'block' => 1])
+
+                            @include('component.text', ['label' => '后台页脚', 'name' => 'config[website][admin_footer]', 'value' => $config['website']['admin_footer'], 'block' => 1])
                             <hr>
 
                             @include('component.submit', ['append' => 1])

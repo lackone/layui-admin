@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="keywords" content="{{ config('admin.keywords') }}">
-    <meta name="description" content="{{ config('admin.description') }}">
-    <title>{{ config('admin.title') }}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ adminAsset('admin/images/logo.png') }}">
+    <meta name="keywords" content="{{ cfg('website', 'admin_keywords') }}">
+    <meta name="description" content="{{ cfg('website', 'admin_description') }}">
+    <title>{{ cfg('website', 'admin_title') }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ cfg('website', 'admin_ico') ?: config('admin.default_icon') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="{{ adminAsset('component/pear/css/pear.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/admin.css') }}"/>

@@ -162,7 +162,7 @@
                         title: '操作',
                         width: 134,
                         minWidth: 125,
-                        toolbar: '#{{ getDomIdKey('', 'toolbar') }}bar'
+                        toolbar: '#{{ getDomIdKey('', 'bar') }}'
                     }
                 ]],
                 done: function () {
@@ -209,17 +209,20 @@
                                     let ids = data.map(v => {
                                         return v.id
                                     })
-                                    $.post("{{ route('admin.user.delete') }}", {
-                                        id: ids
-                                    }, function (res) {
-                                        if (res.code == 200) {
-                                            layer.msg('成功', function () {
-                                                layui.admin.refresh();
-                                            })
-                                        } else {
-                                            layer.msg(res.msg);
-                                        }
-                                    }, 'json');
+                                    layer.confirm('真的删除么?', function (index) {
+                                        $.post("{{ route('admin.user.delete') }}", {
+                                            id: ids
+                                        }, function (res) {
+                                            if (res.code == 200) {
+                                                layer.msg('成功', function () {
+                                                    layui.admin.refresh();
+                                                })
+                                            } else {
+                                                layer.msg(res.msg);
+                                            }
+                                        }, 'json');
+                                        layer.close(index);
+                                    });
                                     break;
                             }
                         }

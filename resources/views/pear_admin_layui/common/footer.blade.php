@@ -1,4 +1,4 @@
-<div class="layui-footer layui-text">Copyright © 2024 小风浪短剧管理系统</div>
+<div class="layui-footer layui-text">{{ cfg('website', 'admin_footer') ?: config('admin.default_footer') }}</div>
 <!-- 遮 盖 层 -->
 <div class="pear-cover"></div>
 <!-- 加 载 动 画 -->

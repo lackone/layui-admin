@@ -47,6 +47,8 @@ class IndexController extends Controller
 
         $config = config('admin.pear_admin_layui_config');
 
+        $config['logo']['title'] = cfg('website', 'admin_index_title') ?: config('admin.default_login_title');
+        $config['logo']['image'] = cfg('website', 'admin_logo') ?: config('admin.default_logo');
         $config['menu']['data'] = $menu_tree;
 
         $config['tab']['index']['href'] = route('admin.welcome', [], false);

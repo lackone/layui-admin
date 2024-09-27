@@ -22,10 +22,12 @@ class Config extends BaseModel
                 if (isJson($item['value'])) {
                     $data[$item['key']][$item['sub_key']] = json_decode($item['value'], true) ?: [];
                 } else {
-                    $data[$item['key']][$item['sub_key']] = $item['value'];
+                    $data[$item['key']][$item['sub_key']] = $item['value'] ?: '';
                 }
             }
         }
         return $data;
     }
+
+
 }

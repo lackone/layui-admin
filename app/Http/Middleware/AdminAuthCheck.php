@@ -24,8 +24,8 @@ class AdminAuthCheck
         $auth = $request->decodedPath();
 
         if ($admin['is_super'] != Admin::IS_SUPER_YES && !RBACService::checkAuth($admin_id, $auth)) {
-            if ($request->ajax()) {
-                //return error("你没有该权限[{$auth}]，请联系管理员");
+            if ($request->ajax() && $request->header('table')) {
+                return error("你没有该权限[{$auth}]，请联系管理员");
             }
             return redirect(route('admin.forbidden', ['msg' => "你没有该权限[{$auth}]，请联系管理员"]));
         }

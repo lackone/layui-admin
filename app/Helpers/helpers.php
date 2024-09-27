@@ -274,3 +274,16 @@ if (!function_exists('isJson')) {
         return (json_last_error() == JSON_ERROR_NONE);
     }
 }
+
+if (!function_exists('cfg')) {
+    /**
+     * 获取配置
+     * @param $key
+     * @param $sub_key
+     * @return array|mixed|string
+     */
+    function cfg($key, $sub_key = '')
+    {
+        return \App\Admin\Services\ConfigService::getConfig($key, $sub_key);
+    }
+}

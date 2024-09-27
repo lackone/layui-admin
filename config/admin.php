@@ -1,30 +1,19 @@
 <?php
 return [
-    //名称
-    'name' => 'layui-admin',
-
-    //LOGO
-    'logo' => '',
-
-    //后台目录
-    'directory' => app_path('Admin'),
-
-    //标题
-    'title' => '小风浪短剧系统',
-
-    //关键字
-    'keywords' => '小风浪短剧系统',
-
-    //描述
-    'description' => '小风浪短剧系统',
-
     //模板
     'theme' => 'pear_admin_layui',
 
-    //图标
-    'favicon' => '',
-
     'https' => env('ADMIN_HTTPS', false),
+
+    'default_logo' => '/pear_admin_layui/admin/images/logo.png',
+
+    'default_icon' => '/pear_admin_layui/admin/images/logo.png',
+
+    'default_login_banner' => '/pear_admin_layui/admin/images/banner.png',
+
+    'default_login_title' => '小风浪后台管理系统',
+
+    'default_footer' => 'Copyright © 2024 小风浪后台管理系统',
 
     //路由相关配置
     'route' => [
@@ -37,9 +26,9 @@ return [
     'pear_admin_layui_config' => [
         'logo' => [
             //网站名称
-            'title' => '小风浪短剧系统',
+            'title' => '小风浪后台管理系统',
             //网站图标
-            'image' => '/pear_admin_layui/admin/images/logo.png',
+            'image' => '',
         ],
         'menu' => [
             //菜单数据

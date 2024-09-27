@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>登录</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ adminAsset('admin/images/logo.png') }}">
+    <meta name="keywords" content="{{ cfg('website', 'admin_keywords') }}">
+    <meta name="description" content="{{ cfg('website', 'admin_description') }}">
+    <title>登录 - {{ cfg('website', 'admin_title') }}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ cfg('website', 'admin_ico') ?: config('admin.default_icon') }}">
     <link rel="stylesheet" href="{{ adminAsset('component/pear/css/pear.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/other/login.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/variables.css') }}"/>
@@ -18,15 +20,15 @@
 <div class="login-page" style="background-image: url({{ adminAsset('admin/images/background.svg') }})">
     <div class="layui-row">
         <div class="layui-col-sm6 login-bg layui-hide-xs">
-            <img class="login-bg-img" src="{{ adminAsset('admin/images/banner.png') }}" alt=""/>
+            <img class="login-bg-img" src="{{ cfg('website', 'admin_login_banner') ?: config('admin.default_login_banner') }}" alt=""/>
         </div>
         <div class="layui-col-sm6 layui-col-xs12 login-form">
             <div class="layui-form">
                 <div class="form-center">
                     <div class="form-center-box">
                         <div class="top-log-title">
-                            <img class="top-log" src="{{ adminAsset('admin/images/logo.png') }}" alt=""/>
-                            <span>小风浪短剧管理系统</span>
+                            <img class="top-log" src="{{ cfg('website', 'admin_logo') ?: config('admin.default_logo') }}" alt=""/>
+                            <span>{{ cfg('website', 'admin_login_title') ?: config('admin.default_login_title') }}</span>
                         </div>
                         <div class="top-desc">
                             以 超 乎 想 象 的 效 率 提 升 运 营 转 化
