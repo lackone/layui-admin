@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 28/09/2024 00:06:55
+ Date: 28/09/2024 17:54:54
 */
 
 SET NAMES utf8mb4;
@@ -40,14 +40,14 @@ CREATE TABLE `xfl_admin_auths`  (
 -- ----------------------------
 -- Records of xfl_admin_auths
 -- ----------------------------
-INSERT INTO `xfl_admin_auths` VALUES (1, '#总后台', '总后台', 1, 1, 0, '', 0, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (2, '#系统管理', '系统管理', 1, 1, 1, '', 99, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (3, '#用户管理', '用户管理', 1, 1, 2, '', 0, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (4, '#角色管理', '角色管理', 1, 1, 2, '', 0, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (5, '#权限管理', '权限管理', 1, 1, 2, '', 0, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (6, '/admin/user/list', '用户列表', 1, 1, 3, '', 0, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (7, '/admin/role/list', '角色列表', 1, 1, 4, '', 0, 1689660985, 1689660985, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (8, '/admin/auth/list', '权限列表', 1, 1, 5, '', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (1, '#总后台', '总后台', 1, 1, 0, 'layui-icon layui-icon-component', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (2, '#系统管理', '系统管理', 1, 1, 1, 'layui-icon layui-icon-set', 99, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (3, '#用户管理', '用户管理', 1, 1, 2, 'layui-icon layui-icon-user', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (4, '#角色管理', '角色管理', 1, 1, 2, 'layui-icon layui-icon-username', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (5, '#权限管理', '权限管理', 1, 1, 2, 'layui-icon layui-icon-auz', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (6, '/admin/user/list', '用户列表', 1, 1, 3, 'layui-icon layui-icon-group', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (7, '/admin/role/list', '角色列表', 1, 1, 4, 'layui-icon layui-icon-friends', 0, 1689660985, 1689660985, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (8, '/admin/auth/list', '权限列表', 1, 1, 5, 'layui-icon layui-icon-vercode', 0, 1689660985, 1689660985, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (9, '/admin/user/save/*', '添加或修改用户', 2, 1, 3, '', 0, 1689911782, 1689911782, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (10, '/admin/user/delete', '删除用户', 2, 1, 3, '', 0, 1689911901, 1689911901, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (11, '/admin/user/set_role/*', '分配角色', 2, 1, 3, '', 0, 1689911954, 1689911954, NULL);
@@ -58,10 +58,10 @@ INSERT INTO `xfl_admin_auths` VALUES (15, '/admin/auth/delete', '删除权限', 
 INSERT INTO `xfl_admin_auths` VALUES (16, '/admin/welcome', '欢迎页', 2, 1, 1, '', -98, 1689918625, 1689918625, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (17, '/admin/logout', '退出', 2, 1, 3, '', 0, 1689918663, 1689918663, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (18, 'admin', '后台首页', 2, 1, 1, '', -99, 1689993187, 1727368473, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (19, '#系统配置', '系统配置', 1, 1, 2, '', 0, 1727407347, 1727407347, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (20, '#字典管理', '字典管理', 1, 1, 2, '', 0, 1727407494, 1727407494, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (21, '/admin/config/website', '网站设置', 1, 1, 19, '', 0, 1727407741, 1727407741, NULL);
-INSERT INTO `xfl_admin_auths` VALUES (22, '/admin/dict/list', '字典列表', 1, 1, 20, '', 0, 1727407766, 1727407766, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (19, '#系统配置', '系统配置', 1, 1, 2, 'layui-icon  layui-icon-set-fill', 0, 1727407347, 1727407347, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (20, '#字典管理', '字典管理', 1, 1, 2, 'layui-icon  layui-icon-app', 0, 1727407494, 1727407494, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (21, '/admin/config/website', '网站设置', 1, 1, 19, 'layui-icon layui-icon-website', 0, 1727407741, 1727407741, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (22, '/admin/dict/list', '字典列表', 1, 1, 20, 'layui-icon layui-icon-template-1', 0, 1727407766, 1727407766, NULL);
 
 -- ----------------------------
 -- Table structure for xfl_admin_role_assocs
@@ -137,7 +137,7 @@ CREATE TABLE `xfl_admins`  (
 -- ----------------------------
 -- Records of xfl_admins
 -- ----------------------------
-INSERT INTO `xfl_admins` VALUES (1, 'admin', 'admin', 'admin', '', 0, 'daISFX', 'aafed593a0134edae0adbe8a1e4d79b5', '1', '1', '1', '1', '127.0.0.1', 1727448955, 1, 1, '1', '1', 1689660985, 1727448955, NULL);
+INSERT INTO `xfl_admins` VALUES (1, 'admin', 'admin', 'admin', '', 0, 'daISFX', 'aafed593a0134edae0adbe8a1e4d79b5', '1', '1', '1', '1', '127.0.0.1', 1727512002, 1, 1, '1', '1', 1689660985, 1727512002, NULL);
 
 -- ----------------------------
 -- Table structure for xfl_configs
