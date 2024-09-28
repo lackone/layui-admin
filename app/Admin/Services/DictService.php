@@ -7,7 +7,7 @@ use App\Models\Dict;
 class DictService
 {
     /**
-     * 获取所有权限
+     * 获取所有字典
      */
     public static function allDictList($status = 0)
     {
@@ -22,7 +22,7 @@ class DictService
     }
 
     /**
-     * 获取所有权限树
+     * 获取所有字典树
      */
     public static function allDictTree($status = 0)
     {

@@ -38,7 +38,7 @@ class IndexController extends Controller
                     'id' => 'welcome',
                     'title' => '欢迎页',
                     'type' => 1,
-                    'icon' => 'layui-icon layui-icon-console',
+                    'icon' => 'layui-icon layui-icon-home',
                     'href' => route('admin.welcome', [], false),
                     'openType' => '_component',
                 ],
@@ -153,6 +153,7 @@ class IndexController extends Controller
                 ];
             }
         }
+
         if ($data) {
             if ($request->header('wangEditor')) {
                 return response()->json([

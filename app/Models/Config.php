@@ -28,6 +28,4 @@ class Config extends BaseModel
         }
         return $data;
     }
-
-
 }

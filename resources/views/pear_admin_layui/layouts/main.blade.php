@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="{{ adminAsset('admin/css/variables.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/reset.css') }}"/>
     <link rel="stylesheet" href="{{ adminAsset('admin/css/other/result.css') }}"/>
+    <style>
+        .pear-nav-tree .layui-nav-child dd a i {
+            display: inline-block;
+            margin-left: 20px;
+            margin-right: 0;
+        }
+        .pear-nav-tree .layui-nav-child dd a span {
+            margin-left: 18px !important;
+        }
+    </style>
     <script src="{{ adminAsset('component/wangeditor/wangEditor.min.js') }}"></script>
 </head>
 <!-- 结 构 代 码 -->

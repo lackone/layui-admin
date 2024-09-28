@@ -109,7 +109,7 @@ class UserService
                 $menu_tree[$k]['deleted'],
             );
 
-            !$menu['icon'] && $menu_tree[$k]['icon'] = 'layui-icon layui-icon-auz';
+            !$menu['icon'] && $menu_tree[$k]['icon'] = 'layui-icon layui-icon-spread-left';
 
             if ($menu['children']) {
                 $menu_tree[$k]['type'] = 0;
