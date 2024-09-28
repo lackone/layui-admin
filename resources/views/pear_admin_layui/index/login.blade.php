@@ -51,30 +51,33 @@
                             以 超 乎 想 象 的 效 率 提 升 运 营 转 化
                         </div>
                         <div style="margin-top: 30px;">
-                            @csrf
-                            <div class="layui-form-item">
-                                <div class="layui-input-wrap">
-                                    <div class="layui-input-prefix">
-                                        <i class="layui-icon layui-icon-username"></i>
+                            <form class="layui-form" lay-filter="login_filter">
+                                @csrf
+                                <div class="layui-form-item">
+                                    <div class="layui-input-wrap">
+                                        <div class="layui-input-prefix">
+                                            <i class="layui-icon layui-icon-username"></i>
+                                        </div>
+                                        <input lay-verify="required" name="account" placeholder="账户"
+                                               autocomplete="off"
+                                               class="layui-input">
                                     </div>
-                                    <input lay-verify="required" name="account" placeholder="账户" autocomplete="off"
-                                           class="layui-input">
                                 </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-wrap">
-                                    <div class="layui-input-prefix">
-                                        <i class="layui-icon layui-icon-password"></i>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-wrap">
+                                        <div class="layui-input-prefix">
+                                            <i class="layui-icon layui-icon-password"></i>
+                                        </div>
+                                        <input type="password" name="password" value=""
+                                               lay-verify="required" placeholder="密码" autocomplete="off"
+                                               class="layui-input" lay-affix="eye">
                                     </div>
-                                    <input type="password" name="password" value=""
-                                           lay-verify="required" placeholder="密码" autocomplete="off"
-                                           class="layui-input" lay-affix="eye">
                                 </div>
-                            </div>
-                            <div class="login-btn">
-                                <button type="button" lay-submit lay-filter="login" class="layui-btn login">登 录
-                                </button>
-                            </div>
+                                <div class="login-btn">
+                                    <button type="button" lay-submit lay-filter="login" class="layui-btn login">登 录
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -110,9 +113,8 @@
         var popup = layui.popup;
         var $ = layui.jquery;
 
-        form.on('submit(login)', function (data) {
-            var field = data.field;
-
+        function login() {
+            var field = form.val('login_filter');
             $.post("{{ route('admin.login') }}", field, function (res) {
                 if (res.code == 200) {
                     button.load({
@@ -128,6 +130,21 @@
                     popup.failure(res.msg);
                 }
             });
+        }
+
+        function keypressLogin() {
+            $("input[name='password']").bind('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    login();
+                }
+            });
+        }
+
+        keypressLogin();
+
+        form.on('submit(login)', function (data) {
+            var field = data.field;
+            login();
             return false;
         });
     })
