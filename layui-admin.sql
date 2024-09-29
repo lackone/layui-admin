@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 28/09/2024 17:54:54
+ Date: 29/09/2024 15:39:50
 */
 
 SET NAMES utf8mb4;
@@ -35,7 +35,7 @@ CREATE TABLE `xfl_admin_auths`  (
   `deleted` int(11) NULL DEFAULT NULL COMMENT '删除时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uniq_name`(`name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后台权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后台权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of xfl_admin_auths
@@ -62,6 +62,9 @@ INSERT INTO `xfl_admin_auths` VALUES (19, '#系统配置', '系统配置', 1, 1,
 INSERT INTO `xfl_admin_auths` VALUES (20, '#字典管理', '字典管理', 1, 1, 2, 'layui-icon  layui-icon-app', 0, 1727407494, 1727407494, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (21, '/admin/config/website', '网站设置', 1, 1, 19, 'layui-icon layui-icon-website', 0, 1727407741, 1727407741, NULL);
 INSERT INTO `xfl_admin_auths` VALUES (22, '/admin/dict/list', '字典列表', 1, 1, 20, 'layui-icon layui-icon-template-1', 0, 1727407766, 1727407766, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (23, '#文章管理', '文章管理', 1, 1, 1, 'layui-icon layui-icon-template-1', 0, 1727581272, 1727581272, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (24, '/admin/article/list', '文章列表', 1, 1, 23, 'layui-icon layui-icon-file-b', 0, 1727581362, 1727581362, NULL);
+INSERT INTO `xfl_admin_auths` VALUES (25, '/admin/article_category/list', '分类列表', 1, 1, 23, 'layui-icon layui-icon-list', 0, 1727581447, 1727581447, NULL);
 
 -- ----------------------------
 -- Table structure for xfl_admin_role_assocs
@@ -137,7 +140,56 @@ CREATE TABLE `xfl_admins`  (
 -- ----------------------------
 -- Records of xfl_admins
 -- ----------------------------
-INSERT INTO `xfl_admins` VALUES (1, 'admin', 'admin', 'admin', '', 0, 'daISFX', 'aafed593a0134edae0adbe8a1e4d79b5', '1', '1', '1', '1', '127.0.0.1', 1727512002, 1, 1, '1', '1', 1689660985, 1727512002, NULL);
+INSERT INTO `xfl_admins` VALUES (1, 'admin', 'admin', 'admin', '', 0, 'daISFX', 'aafed593a0134edae0adbe8a1e4d79b5', '1', '1', '1', '1', '127.0.0.1', 1727593970, 1, 1, '1', '1', 1689660985, 1727593970, NULL);
+
+-- ----------------------------
+-- Table structure for xfl_article_categories
+-- ----------------------------
+DROP TABLE IF EXISTS `xfl_article_categories`;
+CREATE TABLE `xfl_article_categories`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '分类名',
+  `code` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '编码',
+  `pid` int(11) NOT NULL DEFAULT 0 COMMENT '父级ID',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态(-1:禁用,1:启用)',
+  `sort` smallint(5) NOT NULL DEFAULT 0 COMMENT '排序(越小越前)',
+  `created` int(11) NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `updated` int(11) NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `deleted` int(11) NULL DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `uniq_name`(`name`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章分类表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of xfl_article_categories
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for xfl_articles
+-- ----------------------------
+DROP TABLE IF EXISTS `xfl_articles`;
+CREATE TABLE `xfl_articles`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '文章标题',
+  `sub_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '子标题',
+  `author` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '作者',
+  `banner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '文章banner',
+  `category_id` int(11) NOT NULL DEFAULT 0 COMMENT '分类ID',
+  `context` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '内容',
+  `admin_id` int(11) NOT NULL DEFAULT 0 COMMENT '后台操作用户ID',
+  `is_hot` tinyint(1) NOT NULL DEFAULT -1 COMMENT '置顶(-1：否,1：是)',
+  `sort` smallint(5) NOT NULL DEFAULT 0 COMMENT '排序(越小越前)',
+  `click_num` int(11) NOT NULL DEFAULT 0 COMMENT '点击数',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态(-1:禁用,1:启用)',
+  `created` int(11) NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `updated` int(11) NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `deleted` int(11) NULL DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of xfl_articles
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for xfl_configs
