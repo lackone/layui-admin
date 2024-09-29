@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Dict extends BaseModel
+class ArticleCategory extends BaseModel
 {
     //状态(-1:禁用,1:启用)
     const STATUS_DISABLE = -1;
@@ -14,20 +14,11 @@ class Dict extends BaseModel
         self::STATUS_DISABLE => '禁用',
     ];
 
-    //类型(1:原始内容,2:json)
-    const TYPE_RAW = 1;
-    const TYPE_JSON = 2;
-
-    public static $typeList = [
-        self::TYPE_RAW => '原始内容',
-        self::TYPE_JSON => 'json',
-    ];
-
     /**
      * 获取孩子
      */
     public function children()
     {
-        return $this->hasMany(Dict::class, 'pid', 'id');
+        return $this->hasMany(ArticleCategory::class, 'pid', 'id');
     }
 }

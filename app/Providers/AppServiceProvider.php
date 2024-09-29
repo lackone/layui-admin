@@ -5,11 +5,15 @@ namespace App\Providers;
 use App\Models\Admin;
 use App\Models\AdminAuth;
 use App\Models\AdminRole;
+use App\Models\Article;
 use App\Models\Config;
 use App\Models\Dict;
+use App\Models\ArticleCategory;
 use App\Observers\AdminAuthObserver;
 use App\Observers\AdminObserver;
 use App\Observers\AdminRoleObserver;
+use App\Observers\ArticleCategoryObserver;
+use App\Observers\ArticleObserver;
 use App\Observers\ConfigObserver;
 use App\Observers\DictObserver;
 use Illuminate\Support\ServiceProvider;
@@ -45,5 +49,7 @@ class AppServiceProvider extends ServiceProvider
         Admin::observe(AdminObserver::class);
         Config::observe(ConfigObserver::class);
         Dict::observe(DictObserver::class);
+        Article::observe(ArticleObserver::class);
+        ArticleCategory::observe(ArticleCategoryObserver::class);
     }
 }

@@ -13,6 +13,8 @@ return [
 
     'default_login_title' => '小风浪后台管理系统',
 
+    'default_login_sub_title' => '以 超 乎 想 象 的 效 率 提 升 运 营 转 化',
+
     'default_footer' => 'Copyright © 2024 小风浪后台管理系统',
 
     //路由相关配置

@@ -24,7 +24,7 @@ class AdminAuth extends BaseModel
     ];
 
     /**
-     * 获取博客文章的评论
+     * 获取孩子
      */
     public function children()
     {

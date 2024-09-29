@@ -16,7 +16,7 @@
 
                             <h3 style="margin-bottom:15px;">后台设置</h3>
 
-                            @include('component.text', ['label' => '首页标题', 'name' => 'config[website][admin_index_title]', 'value' => $config['website']['admin_index_title'], 'block' => 1])
+                            @include('component.text', ['label' => '后台首页标题', 'name' => 'config[website][admin_index_title]', 'value' => $config['website']['admin_index_title'], 'block' => 1])
 
                             @include('component.text', ['label' => 'title', 'name' => 'config[website][admin_title]', 'value' => $config['website']['admin_title'], 'block' => 1])
 
@@ -31,6 +31,8 @@
                             @include('component.single_image', ['label' => '登录页banner', 'name' => 'config[website][admin_login_banner]', 'value' => $config['website']['admin_login_banner']])
 
                             @include('component.text', ['label' => '登录页标题', 'name' => 'config[website][admin_login_title]', 'value' => $config['website']['admin_login_title'], 'block' => 1])
+
+                            @include('component.text', ['label' => '登录页子标题', 'name' => 'config[website][admin_login_sub_title]', 'value' => $config['website']['admin_login_sub_title'], 'block' => 1])
 
                             @include('component.text', ['label' => '后台页脚', 'name' => 'config[website][admin_footer]', 'value' => $config['website']['admin_footer'], 'block' => 1])
                             <hr>

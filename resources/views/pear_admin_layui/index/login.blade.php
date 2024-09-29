@@ -48,7 +48,7 @@
                             <span>{{ cfg('website', 'admin_login_title') ?: config('admin.default_login_title') }}</span>
                         </div>
                         <div class="top-desc">
-                            以 超 乎 想 象 的 效 率 提 升 运 营 转 化
+                            {{ cfg('website', 'admin_login_sub_title') ?: config('admin.default_login_sub_title') }}
                         </div>
                         <div style="margin-top: 30px;">
                             <form class="layui-form" lay-filter="login_filter">
@@ -96,11 +96,12 @@
             selector: '.background',
             color: ['#DA0463', '#404B69', '#DBEDF3'],
             connectParticles: true,
+            maxParticles: 160,
             responsive: [{
                 breakpoint: 800,
                 options: {
-                    color: '#00C9B1',
-                    maxParticles: 80,
+                    color: ['#DA0463', '#404B69', '#DBEDF3'],
+                    maxParticles: 180,
                     connectParticles: false
                 }
             }]

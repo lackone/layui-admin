@@ -52,6 +52,16 @@ Route::group([
 
         //网站设置
         Route::any('/config/website', 'ConfigController@website')->name('config.website');
+
+        //文章
+        Route::any('/article/list', 'ArticleController@list')->name('article.list');
+        Route::any('/article/save/{article?}', 'ArticleController@save')->name('article.save');
+        Route::any('/article/delete', 'ArticleController@delete')->name('article.delete');
+
+        //文章分类
+        Route::any('/article_category/list', 'ArticleCategoryController@list')->name('article_category.list');
+        Route::any('/article_category/save/{article_category?}', 'ArticleCategoryController@save')->name('article_category.save');
+        Route::any('/article_category/delete', 'ArticleCategoryController@delete')->name('article_category.delete');
     });
 });
 
