@@ -5,7 +5,8 @@
         <div class="layui-card-body">
             <div class="layui-tab">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">网站信息</li>
+                    <li class="layui-this">后台网站信息</li>
+                    <li>前台网站信息</li>
                     <li>网站备案</li>
                     <li>政策协议</li>
                 </ul>
@@ -44,13 +45,35 @@
                         <form class="layui-form" action="">
                             @csrf
 
+                            <h3 style="margin-bottom:15px;">前台设置</h3>
+
+                            @include('component.text', ['label' => 'title', 'name' => 'config[website][front_title]', 'value' => $config['website']['front_title'], 'block' => 1])
+
+                            @include('component.text', ['label' => 'keywords', 'name' => 'config[website][front_keywords]', 'value' => $config['website']['front_keywords'], 'block' => 1])
+
+                            @include('component.text', ['label' => 'description', 'name' => 'config[website][front_description]', 'value' => $config['website']['front_description'], 'block' => 1])
+
+                            @include('component.single_image', ['label' => '网站ico', 'name' => 'config[website][front_ico]', 'value' => $config['website']['front_ico']])
+
+                            @include('component.single_image', ['label' => '网站logo', 'name' => 'config[website][front_logo]', 'value' => $config['website']['front_logo']])
+
+                            @include('component.text', ['label' => '页脚', 'name' => 'config[website][front_footer]', 'value' => $config['website']['front_footer'], 'block' => 1])
+                            <hr>
+
+                            @include('component.submit', ['append' => 2])
+                        </form>
+                    </div>
+                    <div class="layui-tab-item">
+                        <form class="layui-form" action="">
+                            @csrf
+
                             @include('component.text', ['label' => '备案名称', 'name' => 'config[website][beian]', 'value' => $config['website']['beian'], 'block' => 1])
 
                             @include('component.text', ['label' => '备案链接', 'name' => 'config[website][beian_url]', 'value' => $config['website']['beian_url'], 'block' => 1])
 
                             <hr>
 
-                            @include('component.submit', ['append' => 2])
+                            @include('component.submit', ['append' => 3])
                         </form>
                     </div>
                     <div class="layui-tab-item">
@@ -63,7 +86,7 @@
 
                             <hr>
 
-                            @include('component.submit', ['append' => 3])
+                            @include('component.submit', ['append' => 4])
                         </form>
                     </div>
                 </div>
@@ -104,6 +127,18 @@
             });
 
             form.on('submit({{ getDomIdKey('', 'submit', '3') }})', function (data) {
+                var field = data.field; // 获取表单字段值
+                $.post("{{ route('admin.config.website') }}", field, function (res) {
+                    if (res.code == 200) {
+                        layer.msg('成功');
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                }, "json");
+                return false;
+            });
+
+            form.on('submit({{ getDomIdKey('', 'submit', '4') }})', function (data) {
                 var field = data.field; // 获取表单字段值
                 $.post("{{ route('admin.config.website') }}", field, function (res) {
                     if (res.code == 200) {
