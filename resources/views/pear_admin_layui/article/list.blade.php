@@ -214,7 +214,7 @@
                                         }, function (res) {
                                             if (res.code == 200) {
                                                 layer.msg('成功', function () {
-                                                    layui.admin.refresh();
+                                                    top.layui.admin.refresh();
                                                 })
                                             } else {
                                                 layer.msg(res.msg);

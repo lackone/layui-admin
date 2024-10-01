@@ -34,8 +34,8 @@
                 $.post("{{ route('admin.dict.save', $dict['id']) }}", field, function (res) {
                     if (res.code == 200) {
                         layer.msg('成功', function () {
-                            parent.layer.closeAll();
-                            parent.layui.admin.refresh();
+                            top.layer.closeAll();
+                            top.layui.admin.refresh();
                         });
                     } else {
                         layer.msg(res.msg);
