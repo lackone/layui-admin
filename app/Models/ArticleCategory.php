@@ -14,11 +14,23 @@ class ArticleCategory extends BaseModel
         self::STATUS_DISABLE => '禁用',
     ];
 
+    public $nullable = ['code'];
+
     /**
      * 获取孩子
      */
     public function children()
     {
         return $this->hasMany(ArticleCategory::class, 'pid', 'id');
+    }
+
+    /**
+     * 通过code获取分类
+     * @param $code
+     */
+    protected function getArticleCategoryIdByCode($code)
+    {
+        $cate = $this->where('code', $code)->first();
+        return $cate ? $cate['id'] : 0;
     }
 }

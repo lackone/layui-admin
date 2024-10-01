@@ -23,7 +23,7 @@ class ArticleController extends Controller
             $query = Article::where(function ($query) use ($params) {
                 if ($params) {
                     foreach ($params as $key => $value) {
-                        if (in_array($key, ['title', 'sub_title', 'start_time', 'end_time', 'status']) && $value != '') {
+                        if (in_array($key, ['title', 'sub_title', 'code', 'start_time', 'end_time', 'status']) && $value != '') {
                             switch ($key) {
                                 case 'name':
                                     $query->where($key, 'like', $value . '%');
@@ -66,8 +66,14 @@ class ArticleController extends Controller
                 }
 
                 if ($article['id']) {
+                    if (!is_null($params['code']) && Article::where('code', $params['code'])->where('id', '<>', $article['id'])->first()) {
+                        throw new \Exception('已经存在相同编码');
+                    }
                     $article->update($params);
                 } else {
+                    if (!is_null($params['code']) && Article::where('code', $params['code'])->first()) {
+                        throw new \Exception('编码已存在');
+                    }
                     Article::create($params);
                 }
 

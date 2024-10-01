@@ -31,7 +31,7 @@ class BaseObserver
         $attrs = $model->getAttributes();
         if ($attrs) {
             foreach ($attrs as $key => $value) {
-                if (is_null($value) && !in_array($key, ['deleted'])) {
+                if (is_null($value) && !in_array($key, array_merge($model->nullable, ['deleted']))) {
                     $model->{$key} = '';
                 }
             }

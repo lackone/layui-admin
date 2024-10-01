@@ -23,4 +23,28 @@ class Article extends BaseModel
         self::IS_HOT_DISABLE => '否',
         self::IS_HOT_ENABLE => '是',
     ];
+
+    public $nullable = ['code'];
+
+    /**
+     * 通过code获取文章
+     * @param $code
+     */
+    protected function getArticleByCode($code)
+    {
+        return $this->where('code', $code)->first();
+    }
+
+    /**
+     * 通过分类ID来获取文章
+     * @param $cate_id
+     */
+    protected function getListByCateId($cate_id = 0, $where = [])
+    {
+        return $this->where('status', self::STATUS_ENABLE)
+            ->where(function ($query) use ($cate_id, $where) {
+                $cate_id && $query->where('category_id', $cate_id);
+                $where && $query->where($where);
+            })->orderBy('is_hot', 'desc')->orderBy('sort', 'asc')->orderBy('id', 'desc')->paginate();
+    }
 }

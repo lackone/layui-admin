@@ -22,6 +22,13 @@ class BaseModel extends Model
     protected $guarded = ['_token'];
 
     /**
+     * 可空字段
+     *
+     * @var array
+     */
+    public $nullable = [];
+
+    /**
      * 指示模型是否主动维护时间戳。
      *
      * @var bool

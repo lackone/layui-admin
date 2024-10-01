@@ -1,0 +1,225 @@
+/*
+  Flaticon icon font: Flaticon
+  Creation date: 06/08/2019 10:03
+  */
+
+@font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.eot");
+    src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Flaticon.woff2") format("woff2"),
+    url("../fonts/Flaticon.woff") format("woff"),
+    url("../fonts/Flaticon.ttf") format("truetype"),
+    url("../fonts/Flaticon.svg#Flaticon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @font-face {
+        font-family: "Flaticon";
+        src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+    }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-style: normal;
+}
+
+.flaticon-writing:before {
+    content: "\f100";
+}
+
+.flaticon-music-player-play:before {
+    content: "\f101";
+}
+
+.flaticon-avatar:before {
+    content: "\f102";
+}
+
+.flaticon-user:before {
+    content: "\f103";
+}
+
+.flaticon-rating:before {
+    content: "\f104";
+}
+
+.flaticon-skype-logo:before {
+    content: "\f105";
+}
+
+.flaticon-customer-reviews:before {
+    content: "\f106";
+}
+
+.flaticon-apple:before {
+    content: "\f107";
+}
+
+.flaticon-android-logo:before {
+    content: "\f108";
+}
+
+.flaticon-left-quotes-sign:before {
+    content: "\f109";
+}
+
+.flaticon-calendar:before {
+    content: "\f10a";
+}
+
+.flaticon-check:before {
+    content: "\f10b";
+}
+
+.flaticon-monitor:before {
+    content: "\f10c";
+}
+
+.flaticon-upload:before {
+    content: "\f10d";
+}
+
+.flaticon-shield:before {
+    content: "\f10e";
+}
+
+.flaticon-time-left:before {
+    content: "\f10f";
+}
+
+.flaticon-cube:before {
+    content: "\f110";
+}
+
+.flaticon-crop:before {
+    content: "\f111";
+}
+
+.flaticon-checked:before {
+    content: "\f112";
+}
+
+.flaticon-right-arrow:before {
+    content: "\f113";
+}
+
+.flaticon-left-arrow:before {
+    content: "\f114";
+}
+
+.flaticon-favorite-heart-button:before {
+    content: "\f115";
+}
+
+.flaticon-speech-bubbles-comment-option:before {
+    content: "\f116";
+}
+
+.flaticon-quality:before {
+    content: "\f117";
+}
+
+.flaticon-graph:before {
+    content: "\f118";
+}
+
+.flaticon-chrome:before {
+    content: "\f119";
+}
+
+.flaticon-linux-logo:before {
+    content: "\f11a";
+}
+
+.flaticon-windows-logo-silhouette:before {
+    content: "\f11b";
+}
+
+.flaticon-happy-mac-logo:before {
+    content: "\f11c";
+}
+
+.flaticon-question:before {
+    content: "\f11d";
+}
+
+.flaticon-clipboard:before {
+    content: "\f11e";
+}
+
+.flaticon-bug-report-button:before {
+    content: "\f11f";
+}
+
+.flaticon-text-quotes:before {
+    content: "\f120";
+}
+
+.flaticon-group:before {
+    content: "\f121";
+}
+
+.flaticon-verified:before {
+    content: "\f122";
+}
+
+.flaticon-cancel:before {
+    content: "\f123";
+}
+
+.flaticon-settings:before {
+    content: "\f124";
+}
+
+.flaticon-diamond:before {
+    content: "\f125";
+}
+
+.flaticon-graph-line-screen:before {
+    content: "\f126";
+}
+
+.flaticon-question-mark:before {
+    content: "\f127";
+}
+
+.flaticon-chart-1:before {
+    content: "\f128";
+}
+
+.flaticon-chart:before {
+    content: "\f129";
+}
+
+.flaticon-clock:before {
+    content: "\f12a";
+}
+
+.flaticon-passage-of-time:before {
+    content: "\f12b";
+}
+
+.flaticon-computer:before {
+    content: "\f12c";
+}
+
+.flaticon-transit:before {
+    content: "\f12d";
+}
+
+.flaticon-info:before {
+    content: "\f12e";
+}
+
+.flaticon-slim-right:before {
+    content: "\f12f";
+}
+
+.flaticon-upload-1:before {
+    content: "\f130";
+}

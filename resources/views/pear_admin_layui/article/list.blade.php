@@ -9,6 +9,8 @@
 
                     @include('component.text', ['label' => '子标题', 'name' => 'sub_title', 'is_search' => 1])
 
+                    @include('component.text', ['label' => '编码', 'name' => 'code', 'is_search' => 1])
+
                     @include('component.datetime_range', ['label' => '日期范围', 'name' => 'time', 'is_search' => 1])
 
                     @include('component.submit', ['is_search' => 1])
@@ -91,6 +93,10 @@
                     {
                         field: 'sub_title',
                         title: '子标题',
+                    },
+                    {
+                        field: 'code',
+                        title: '编码',
                     },
                     {
                         field: 'category_id',

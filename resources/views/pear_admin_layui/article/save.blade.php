@@ -8,6 +8,8 @@
 
         @include('component.text', ['label' => '子标题', 'name' => 'sub_title', 'value' => $article['sub_title']])
 
+        @include('component.text', ['label' => '编码', 'name' => 'code', 'value' => $article['code']])
+
         @include('component.search_select_multi', ['label' => '分类ID', 'name' => 'category_id', 'list' => $category_tree, 'title' => 'name', 'value' => $article['category_id']])
 
         @include('component.text', ['label' => '作者', 'name' => 'author', 'value' => $article['author']])

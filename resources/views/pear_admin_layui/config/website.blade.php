@@ -57,6 +57,10 @@
 
                             @include('component.single_image', ['label' => '网站logo', 'name' => 'config[website][front_logo]', 'value' => $config['website']['front_logo']])
 
+                            @include('component.single_image', ['label' => '网站底部logo', 'name' => 'config[website][front_footer_logo]', 'value' => $config['website']['front_footer_logo']])
+
+                            @include('component.text', ['label' => '联系地址', 'name' => 'config[website][front_address]', 'value' => $config['website']['front_address'], 'block' => 1])
+
                             @include('component.text', ['label' => '页脚', 'name' => 'config[website][front_footer]', 'value' => $config['website']['front_footer'], 'block' => 1])
                             <hr>
 

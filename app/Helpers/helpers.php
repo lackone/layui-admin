@@ -31,6 +31,19 @@ if (!function_exists('adminAsset')) {
     }
 }
 
+if (!function_exists('frontAsset')) {
+    /**
+     * 前台资源路径生成
+     */
+    function frontAsset($path): string
+    {
+        $theme = config('web.theme', 'website');
+        $path = $theme . '/' . ltrim($path, '/');
+
+        return (config('web.https') || config('web.secure')) ? secure_asset($path) : asset($path);
+    }
+}
+
 if (!function_exists('success')) {
     /**
      * 成功
