@@ -60,14 +60,14 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                     <div class="content-box">
-                        <div class="sec-title"><h2>做短剧系统，为什么选择飞雪流星网络科技？</h2></div>
+                        <div class="sec-title"><h2>做短剧系统，为什么选择网络科技？</h2></div>
                         <div class="text">
-                            <p>①飞雪流星短剧系统功能丰富，且一套系统支持绑定多个微信小程序<br/>
+                            <p>①短剧系统功能丰富，且一套系统支持绑定多个微信小程序<br/>
                                 ②每个小程序的数据分开展示<br/>
                                 ③支持无限多个代理商分销<br/>
                                 ④支持国内多个主流广告平台的数据回传对接<br/>
                                 ⑤拥有丰富的短剧相关资源和经验，从系统搭建到运营管理，我们可提供全流程的专业指导和服务<br/>
-                                ⑥飞雪流星成功客户案例众多，小艺剧院，小艺视频等都是我们的签约客户
+                                ⑥成功客户案例众多，小艺剧院，小艺视频等都是我们的签约客户
                             </p>
                         </div>
                         <div class="btn-box"><a href="#" class="theme-btn">开始使用</a></div>
@@ -85,10 +85,10 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                     <div class="content-box">
-                        <div class="sec-title"><h2>飞雪流星网络科技为您搭建网络微短剧平台</h2></div>
+                        <div class="sec-title"><h2>网络科技为您搭建网络微短剧平台</h2></div>
                         <div class="text">
                             <p>
-                                短剧作为当下热门行业之一，飞雪流星网络科技技术团队精心研发的禾店短剧平台，包括微信端、快手端、字节跳动端并打通巨量引擎广告系统，代理商拥有专属后台管理权限，所有端均可在PC管理后台统一管理，便捷且高效。</p>
+                                短剧作为当下热门行业之一，网络科技技术团队精心研发的禾店短剧平台，包括微信端、快手端、字节跳动端并打通巨量引擎广告系统，代理商拥有专属后台管理权限，所有端均可在PC管理后台统一管理，便捷且高效。</p>
                         </div>
                         <div class="btn-box"><a href="#" class="theme-btn">开始使用</a></div>
                     </div>

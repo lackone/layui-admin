@@ -47,9 +47,9 @@
                             <h4 class="widget-title">联系我们</h4>
                             <div class="widget-content">
                                 <ul>
-                                    <li><a href="#">15907146375</a></li>
-                                    <li><a href="#">15623080865</a></li>
-                                    <li><a href="#">fxlx@xfenglang.com</a></li>
+                                    <li><a href="#">15900000000</a></li>
+                                    <li><a href="#">15600000000</a></li>
+                                    <li><a href="#">test@test.com</a></li>
                                 </ul>
                             </div>
                         </div>
