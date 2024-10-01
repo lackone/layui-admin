@@ -293,10 +293,11 @@ if (!function_exists('cfg')) {
      * 获取配置
      * @param $key
      * @param $sub_key
+     * @param $ext
      * @return array|mixed|string
      */
-    function cfg($key, $sub_key = '')
+    function cfg($key, $sub_key = '', $ext = false)
     {
-        return \App\Admin\Services\ConfigService::getConfig($key, $sub_key);
+        return \App\Admin\Services\ConfigService::getConfig($key, $sub_key, $ext) ?: '';
     }
 }

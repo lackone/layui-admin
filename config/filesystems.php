@@ -63,6 +63,13 @@ return [
             'url' => env('APP_URL') . '/uploads',
             'visibility' => 'public',
         ],
+
+        'cert' => [
+            'driver' => 'local',
+            'root' => storage_path('app/cert'),
+            'serve' => true,
+            'throw' => false,
+        ],
     ],
 
     /*

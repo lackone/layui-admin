@@ -133,6 +133,48 @@ return [
             'level' => 'info',
             'days' => 7,
         ],
+
+        'weixin_gzh' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/weixin_gzh.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        'weixin_pay' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/weixin_pay.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        'weixin_mini' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/weixin_mini.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        'weixin_open' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/weixin_open.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        'weixin_corp' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/weixin_corp.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        'weixin_corp_open' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/weixin_corp_open.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
     ],
 
 ];

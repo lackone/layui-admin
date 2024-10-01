@@ -12,9 +12,9 @@ class ConfigService
      * @param $sub_key
      * @return array|mixed|string
      */
-    public static function getConfig($key, $sub_key = '')
+    public static function getConfig($key, $sub_key = '', $ext = false)
     {
-        $configs = Config::getAllConfigs($key);
+        $configs = Config::getAllConfigs($key, $ext);
         if ($sub_key) {
             return $configs[$key][$sub_key] ?: '';
         }

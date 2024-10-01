@@ -52,6 +52,7 @@ Route::group([
 
         //网站设置
         Route::any('/config/website', 'ConfigController@website')->name('config.website');
+        Route::any('/config/weixin', 'ConfigController@weixin')->name('config.weixin');
 
         //文章
         Route::any('/article/list', 'ArticleController@list')->name('article.list');
