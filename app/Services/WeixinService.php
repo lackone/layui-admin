@@ -18,6 +18,7 @@ class WeixinService
 
         switch ($type) {
             case 'gzh':
+                //公众号
                 $config = config('easywechat.gzh', []);
 
                 $config['app_id'] = cfg('weixin', 'gzh_app_id');
@@ -30,8 +31,13 @@ class WeixinService
                 self::$configs[$type][trim($config['app_id'])] = $config;
                 self::$apps[$type][trim($config['app_id'])] = new \EasyWeChat\OfficialAccount\Application($config);
 
+                if (\is_callable([self::$apps[$type][trim($config['app_id'])], 'setCache'])) {
+                    self::$apps[$type][trim($config['app_id'])]->setCache(app('cache.store'));
+                }
+
                 break;
             case 'mini':
+                //小程序
                 $config = config('easywechat.mini', []);
 
                 $config['app_id'] = cfg('weixin', 'mini_app_id');
@@ -44,8 +50,13 @@ class WeixinService
                 self::$configs[$type][trim($config['app_id'])] = $config;
                 self::$apps[$type][trim($config['app_id'])] = new \EasyWeChat\MiniApp\Application($config);
 
+                if (\is_callable([self::$apps[$type][trim($config['app_id'])], 'setCache'])) {
+                    self::$apps[$type][trim($config['app_id'])]->setCache(app('cache.store'));
+                }
+
                 break;
             case 'pay':
+                //微信支付
                 $config = config('easywechat.pay', []);
 
                 $config['mch_id'] = cfg('weixin', 'pay_mch_id');
@@ -56,10 +67,15 @@ class WeixinService
                 $config = array_merge($config, $rewrite);
 
                 self::$configs[$type][trim($config['mch_id'])] = $config;
-                self::$configs[$type][trim($config['mch_id'])] = new \EasyWeChat\Pay\Application($config);
+                self::$apps[$type][trim($config['mch_id'])] = new \EasyWeChat\Pay\Application($config);
+
+                if (\is_callable([self::$apps[$type][trim($config['mch_id'])], 'setCache'])) {
+                    self::$apps[$type][trim($config['mch_id'])]->setCache(app('cache.store'));
+                }
 
                 break;
             case 'open':
+                //开放平台
                 $config = config('easywechat.open', []);
 
                 $config['app_id'] = cfg('weixin', 'open_app_id');
@@ -70,10 +86,15 @@ class WeixinService
                 $config = array_merge($config, $rewrite);
 
                 self::$configs[$type][trim($config['app_id'])] = $config;
-                self::$configs[$type][trim($config['app_id'])] = new \EasyWeChat\OpenPlatform\Application($config);
+                self::$apps[$type][trim($config['app_id'])] = new \EasyWeChat\OpenPlatform\Application($config);
+
+                if (\is_callable([self::$apps[$type][trim($config['app_id'])], 'setCache'])) {
+                    self::$apps[$type][trim($config['app_id'])]->setCache(app('cache.store'));
+                }
 
                 break;
             case 'corp':
+                //企业微信
                 $config = config('easywechat.corp', []);
 
                 $config['corp_id'] = cfg('weixin', 'corp_id');
@@ -84,10 +105,15 @@ class WeixinService
                 $config = array_merge($config, $rewrite);
 
                 self::$configs[$type][trim($config['corp_id'])] = $config;
-                self::$configs[$type][trim($config['corp_id'])] = new \EasyWeChat\Work\Application($config);
+                self::$apps[$type][trim($config['corp_id'])] = new \EasyWeChat\Work\Application($config);
+
+                if (\is_callable([self::$apps[$type][trim($config['corp_id'])], 'setCache'])) {
+                    self::$apps[$type][trim($config['corp_id'])]->setCache(app('cache.store'));
+                }
 
                 break;
             case 'corp_open':
+                //企业微信开放平台
                 $config = config('easywechat.corp_open', []);
 
                 $config['corp_id'] = cfg('weixin', 'corp_open_id');
@@ -98,7 +124,11 @@ class WeixinService
                 $config = array_merge($config, $rewrite);
 
                 self::$configs[$type][trim($config['corp_id'])] = $config;
-                self::$configs[$type][trim($config['corp_id'])] = new \EasyWeChat\OpenWork\Application($config);
+                self::$apps[$type][trim($config['corp_id'])] = new \EasyWeChat\OpenWork\Application($config);
+
+                if (\is_callable([self::$apps[$type][trim($config['corp_id'])], 'setCache'])) {
+                    self::$apps[$type][trim($config['corp_id'])]->setCache(app('cache.store'));
+                }
 
                 break;
             default:
