@@ -82,6 +82,16 @@ class UserService
     }
 
     /**
+     * 根据token获取信息
+     * @param $token
+     * @return array|mixed
+     */
+    public static function getInfoByToken($token)
+    {
+        return Cache::get(self::TOKEN_PREFIX . $token) ?: [];
+    }
+
+    /**
      * 更新token中的信息
      */
     public static function updateTokenInfo($user_id, $token)
