@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,4 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'user_token' => [
+        'expire_duration' => 3600 * 8, //用户token过期时长(单位秒）
+        'be_expire_duration' => 3600, //用户token临时过期前时长，自动续期
+    ],
 ];

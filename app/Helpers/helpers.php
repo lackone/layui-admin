@@ -121,6 +121,48 @@ if (!function_exists('getRealIp')) {
     }
 }
 
+if (!function_exists('getDeviceType')) {
+    /**
+     * 获取设备类型
+     * @return string
+     */
+    function getDeviceType($user_agent = '')
+    {
+        // 获取 User-Agent 字符串
+        $user_agent = $user_agent ?: $_SERVER['HTTP_USER_AGENT'];
+        $device_type = 'Unknown';
+
+        // 检查操作系统和设备类型
+        if (preg_match('/android/i', $user_agent)) {
+            $device_type = 'Android';
+        } elseif (preg_match('/iphone|ipad|ipod/i', $user_agent)) {
+            $device_type = 'IOS';
+        } elseif (preg_match('/windows/i', $user_agent)) {
+            $device_type = 'Windows';
+        } elseif (preg_match('/macintosh|mac os x/i', $user_agent)) {
+            $device_type = 'Mac';
+        } elseif (preg_match('/linux/i', $user_agent)) {
+            $device_type = 'Linux';
+        }
+
+        return $device_type;
+    }
+}
+
+if (!function_exists('createToken')) {
+    /**
+     * 生成token
+     * @param string $key
+     * @param string $append
+     * @return string
+     */
+    function createToken($key = '', $append = ''): string
+    {
+        $append = $append ?: md5(uniqid(microtime(true), true));
+        return md5($key . $append);
+    }
+}
+
 if (!function_exists('makeTree')) {
     /**
      * 生成树型数据

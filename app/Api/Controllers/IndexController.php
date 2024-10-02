@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Api\Controllers;
+
+use App\Services\UserService;
+use App\Services\WeixinService;
+use Illuminate\Http\Request;
+
+class IndexController extends Controller
+{
+    /**
+     * 微信公众号
+     * @param Request $request
+     */
+    public function gzhServe(Request $request)
+    {
+        $app = WeixinService::getApp('gzh');
+        $server = $app->getServer();
+
+        $server->addMessageListener('text', function ($message, \Closure $next) {
+            return 'test!';
+        });
+
+        $server->addEventListener('subscribe', function ($message, \Closure $next) {
+            return '感谢您关注!';
+        });
+
+        return $server->serve();
+    }
+
+    /**
+     * 微信公众号
+     * @param Request $request
+     */
+    public function gzh(Request $request)
+    {
+        $params = $request->all();
+        $app = WeixinService::getApp('gzh', '', ['oauth' => ['redirect_url' => route('api.gzh')]]);
+        $oauth = $app->getOauth();
+        if (!$params['code']) {
+            $redirectUrl = $oauth->scopes(['snsapi_userinfo'])->redirect();
+            return redirect($redirectUrl);
+        } else {
+            $user = $oauth->userFromCode($params['code']);
+            $raw = $user->getRaw();
+            $data = UserService::login('gzh', $raw);
+            return success($data);
+        }
+    }
+}

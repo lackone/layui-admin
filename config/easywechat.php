@@ -64,8 +64,8 @@ return [
         'mch_id' => 1360649000,
 
         // 商户证书
-        'private_key' => __DIR__ . '/certs/apiclient_key.pem',
-        'certificate' => __DIR__ . '/certs/apiclient_cert.pem',
+        'private_key' => '',
+        'certificate' => '',
 
         // v3 API 秘钥
         'secret_key' => '',
@@ -173,10 +173,10 @@ return [
     ],
     //企业微信
     'corp' => [
-        'corp_id' => 'wx3cf0f39249eb0exx',
-        'secret' => 'f1c242f4f28f735d4687abb469072axx',
-        'token' => 'easywechat',
-        'aes_key' => '35d4687abb469072a29f1c242xxxxxx',
+        'corp_id' => '',
+        'secret' => '',
+        'token' => '',
+        'aes_key' => '',
 
         'response_type' => 'array', //指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
 
@@ -210,9 +210,9 @@ return [
     ],
     //企业微信开放平台
     'corp_open' => [
-        'corp_id' => 'wx3cf0f39249eb0exx',
-        'provider_secret' => 'f1c242f4f28f735d4687abb469072axx',
-        'token' => 'easywechat',
+        'corp_id' => '',
+        'provider_secret' => '',
+        'token' => '',
         'aes_key' => '', // 明文模式请勿填写 EncodingAESKey
 
         'response_type' => 'array', //指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
