@@ -157,6 +157,35 @@ class WeixinService
     }
 
     /**
+     * 获取AccessToken
+     * @param $type
+     * @param $id
+     * @param $rewrite
+     * @return mixed
+     */
+    public static function getAccessToken($type, $id = '', $rewrite = [])
+    {
+        $app = self::getApp($type, $id, $rewrite);
+
+        return $app->getAccessToken()->getToken();
+    }
+
+    /**
+     * 刷新AccessToken并获取
+     * @param $type
+     * @param $id
+     * @param $rewrite
+     * @return mixed
+     */
+    public static function getRefreshAccessToken($type, $id = '', $rewrite = [])
+    {
+        $app = self::getApp($type, $id, $rewrite);
+
+        $app->getAccessToken()->refresh();
+        return $app->getAccessToken()->getToken();
+    }
+
+    /**
      * 小程序-根据code获取微信信息
      * @param $code
      * @param $id
@@ -174,5 +203,21 @@ class WeixinService
         }
 
         return $response;
+    }
+
+    /**
+     * 小程序-获取手机号
+     * @param $code
+     * @param $id
+     * @param $rewrite
+     * @return mixed
+     */
+    public static function miniGetPhoneByCode($code, $id = '', $rewrite = [])
+    {
+        $app = self::getApp('mini', $id, $rewrite);
+
+        return $app->getClient()->postJson('wxa/business/getuserphonenumber', [
+            'code' => $code,
+        ]);
     }
 }

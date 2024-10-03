@@ -215,9 +215,9 @@ layui.define(['jquery', 'element', 'dropdown'], function (exports) {
 
 	/**
 	 * @since Pear Admin 4.0
-	 * 
+	 *
 	 * 删除指定选项卡
-	 * 
+	 *
 	 * @param id 编号
 	 */
 	tabPage.prototype.removeTab = function (id) {
@@ -239,7 +239,7 @@ layui.define(['jquery', 'element', 'dropdown'], function (exports) {
 
 	/**
 	 * @since Pear Admin 4.0
-	 * 
+	 *
 	 * 删除其他选项卡
 	 */
 	tabPage.prototype.removeOtherTab = function () {
@@ -257,7 +257,7 @@ layui.define(['jquery', 'element', 'dropdown'], function (exports) {
 
 	/**
 	 * @since Pear Admin 4.0
-	 * 
+	 *
 	 * 删除选中选项卡
 	 */
 	tabPage.prototype.removeCurrentTab = function () {
@@ -270,9 +270,9 @@ layui.define(['jquery', 'element', 'dropdown'], function (exports) {
 
 	/**
 	 * @since Pear Admin 4.0
-	 * 
+	 *
 	 * 切换选项卡
-	 * 
+	 *
 	 * @param opt 内容
 	 */
 	tabPage.prototype.changePage = function (opt) {
@@ -378,7 +378,7 @@ layui.define(['jquery', 'element', 'dropdown'], function (exports) {
 
 	/**
 	 * 刷新当前选型卡
-	 * 
+	 *
 	 * @param time 动画时长
 	 */
 	tabPage.prototype.refresh = function (time) {
@@ -392,6 +392,14 @@ layui.define(['jquery', 'element', 'dropdown'], function (exports) {
 				display: "block"
 			});
 		}
+
+        if ($iframe.length >= 2) {
+            $.each($iframe, function (ix) {
+                if ($(this).attr("src")) {
+                    $iframe = $(this);
+                }
+            });
+        }
 
 		if ($iframe.attr("type") === "_iframe") {
 			$iframe.attr("src", $iframe.attr("src"));

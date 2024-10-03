@@ -9,8 +9,8 @@ Route::group([
     'middleware' => [],
 ], function () {
 
-    Route::any('/test', 'TestController@test')->name('test');
-
     Route::any('/gzh', 'IndexController@gzh')->name('gzh');
     Route::any('/gzh_serve', 'IndexController@gzhServe')->name('gzh_serve');
+
+    Route::any('/mini_login', 'IndexController@miniLogin')->name('mini_login');
 });

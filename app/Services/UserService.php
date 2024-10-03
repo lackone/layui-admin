@@ -47,7 +47,27 @@ class UserService
      */
     public static function miniLogin($raw = [])
     {
+        if (!$raw['openid']) {
+            throw new \Exception('openid不能为空');
+        }
 
+        $user_wx = UserWeixin::firstOrCreate([
+            'openid' => $raw['openid'],
+        ], [
+            'source' => UserWeixin::SOURCE_WX_MINI,
+        ]);
+
+        if ($user_wx['user_id']) {
+            $user = self::updateUser($user_wx['user_id']);
+        } else {
+            $user = self::createUser([
+                'source' => User::SOURCE_WX_MINI,
+            ]);
+            $user_wx->user_id = $user->id;
+            $user_wx->save();
+        }
+
+        return $user;
     }
 
     /**
@@ -101,6 +121,7 @@ class UserService
             throw new \Exception('未找到用户');
         }
         $user = $user->toArray();
+        $user['token'] = $token;
         Cache::put(self::TOKEN_PREFIX . $token, $user, config('app.user_token.expire_duration'));
     }
 

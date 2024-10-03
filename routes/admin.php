@@ -63,6 +63,12 @@ Route::group([
         Route::any('/article_category/list', 'ArticleCategoryController@list')->name('article_category.list');
         Route::any('/article_category/save/{article_category?}', 'ArticleCategoryController@save')->name('article_category.save');
         Route::any('/article_category/delete', 'ArticleCategoryController@delete')->name('article_category.delete');
+
+        //小程序
+        Route::any('/applet/list', 'AppletController@list')->name('applet.list');
+        Route::any('/applet/save/{applet?}', 'AppletController@save')->name('applet.save');
+        Route::any('/applet/delete', 'AppletController@delete')->name('applet.delete');
+        Route::any('/applet/set', 'AppletController@set')->name('applet.set');
     });
 });
 
