@@ -102,6 +102,24 @@ class UserService
     }
 
     /**
+     * 延长token有效期
+     */
+    public static function delayToken($token)
+    {
+        $user_session = UserSession::where('token', $token)->first();
+        if (!$user_session) {
+            throw new \Exception('token不存在');
+        }
+
+        $user_session->expire_time = time() + config('app.user_token.expire_duration');
+        $user_session->save();
+
+        self::updateTokenInfo($user_session['user_id'], $token);
+
+        return true;
+    }
+
+    /**
      * 根据token获取信息
      * @param $token
      * @return array|mixed
@@ -122,6 +140,7 @@ class UserService
         }
         $user = $user->toArray();
         $user['token'] = $token;
+        $user['expire_time'] = time() + config('app.user_token.expire_duration');
         Cache::put(self::TOKEN_PREFIX . $token, $user, config('app.user_token.expire_duration'));
     }
 

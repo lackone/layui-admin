@@ -49,6 +49,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'AdminAuthCheck' => \App\Http\Middleware\AdminAuthCheck::class,
             'AdminTemplate' => \App\Http\Middleware\AdminTemplate::class,
             'FrontTemplate' => \App\Http\Middleware\FrontTemplate::class,
+            'ApiLoginCheck' => \App\Http\Middleware\ApiLoginCheck::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
 {
+    public $not_need_login = [];
+
     /**
      * 微信公众号
      * @param Request $request
@@ -83,5 +85,12 @@ class IndexController extends Controller
         } catch (\Exception $e) {
             return error($e->getMessage());
         }
+    }
+
+    public function test()
+    {
+        dump(WeixinService::getConfig('mini'));
+        dump(WeixinService::getConfig('pay', '22222'));
+        dump(WeixinService::$configs);
     }
 }

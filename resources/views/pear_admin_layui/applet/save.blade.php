@@ -16,6 +16,18 @@
 
         @include('component.radio', ['label' => '状态', 'name' => 'status', 'list' => \App\Models\Applet::$statusList, 'value' => $applet['status']])
 
+        <hr>
+
+        <h3 style="margin-bottom:15px;">支付相关配置</h3>
+
+        @include('component.text', ['label' => '商户号mch_id', 'name' => 'mch_id', 'value' => $applet['mch_id']])
+
+        @include('component.text', ['label' => '商户API密钥', 'name' => 'secret_key', 'value' => $applet['secret_key']])
+
+        @include('component.textarea', ['label' => '微信支付证书', 'name' => 'certificate', 'value' => $applet['certificate']])
+
+        @include('component.textarea', ['label' => '微信证书密钥', 'name' => 'private_key', 'value' => $applet['private_key']])
+
         @include('component.submit')
     </form>
 @endsection

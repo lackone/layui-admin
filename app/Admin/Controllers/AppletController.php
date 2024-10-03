@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Models\Applet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AppletController extends Controller
 {
@@ -62,6 +63,20 @@ class AppletController extends Controller
             try {
                 if (!$params['name']) {
                     throw new \Exception('名称不能为空');
+                }
+
+                if ($params['private_key'] && (!$applet['private_key_path'] || $applet['private_key'] != $params['private_key'])) {
+                    $day = date('YmdHis');
+                    $path = "{$day}_private_key.pem";
+                    Storage::disk('cert')->put($path, $params['private_key']);
+                    $params['private_key_path'] = Storage::disk('cert')->path($path);
+                }
+
+                if ($params['certificate'] && (!$applet['certificate_path'] || $applet['certificate'] != $params['certificate'])) {
+                    $day = date('YmdHis');
+                    $path = "{$day}_certificate.pem";
+                    Storage::disk('cert')->put($path, $params['certificate']);
+                    $params['certificate_path'] = Storage::disk('cert')->path($path);
                 }
 
                 if ($applet['id']) {

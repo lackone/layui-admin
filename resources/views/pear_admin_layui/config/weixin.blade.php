@@ -76,13 +76,13 @@
 
                             <h3 style="margin-bottom:15px;">微信支付</h3>
 
-                            @include('component.text', ['label' => 'mch_id', 'name' => 'config[weixin][pay_mch_id]', 'value' => $config['weixin']['pay_mch_id'], 'block' => 1])
+                            @include('component.text', ['label' => '商户号mch_id', 'name' => 'config[weixin][pay_mch_id]', 'value' => $config['weixin']['pay_mch_id'], 'block' => 1])
 
-                            @include('component.textarea', ['label' => 'private_key', 'name' => 'config[weixin][pay_private_key]', 'value' => $config['weixin']['pay_private_key'], 'block' => 1])
+                            @include('component.text', ['label' => '商户API密钥', 'name' => 'config[weixin][pay_secret_key]', 'value' => $config['weixin']['pay_secret_key'], 'block' => 1])
 
-                            @include('component.textarea', ['label' => 'certificate', 'name' => 'config[weixin][pay_certificate]', 'value' => $config['weixin']['pay_certificate'], 'block' => 1])
+                            @include('component.textarea', ['label' => '微信支付证书', 'name' => 'config[weixin][pay_certificate]', 'value' => $config['weixin']['pay_certificate'], 'block' => 1])
 
-                            @include('component.text', ['label' => 'secret_key', 'name' => 'config[weixin][pay_secret_key]', 'value' => $config['weixin']['pay_secret_key'], 'block' => 1])
+                            @include('component.textarea', ['label' => '微信证书密钥', 'name' => 'config[weixin][pay_private_key]', 'value' => $config['weixin']['pay_private_key'], 'block' => 1])
 
                             <hr>
 
