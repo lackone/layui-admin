@@ -62,6 +62,12 @@
                             @include('component.text', ['label' => '联系地址', 'name' => 'config[website][front_address]', 'value' => $config['website']['front_address'], 'block' => 1])
 
                             @include('component.text', ['label' => '页脚', 'name' => 'config[website][front_footer]', 'value' => $config['website']['front_footer'], 'block' => 1])
+
+                            @include('component.text', ['label' => '客服微信', 'name' => 'config[website][front_kf_wx]', 'value' => $config['website']['front_kf_wx'], 'block' => 1])
+
+                            @include('component.single_image', ['label' => '客服微信图片', 'name' => 'config[website][front_kf_wx_img]', 'value' => $config['website']['front_kf_wx_img']])
+
+                            @include('component.text', ['label' => '客服QQ', 'name' => 'config[website][front_kf_qq]', 'value' => $config['website']['front_kf_qq'], 'block' => 1])
                             <hr>
 
                             @include('component.submit', ['append' => 2])

@@ -127,4 +127,17 @@ return [
         'expire_duration' => 3600 * 8, //用户token过期时长(单位秒）
         'be_expire_duration' => 3600, //用户token临时过期前时长，自动续期
     ],
+
+    'wx' => [
+        'mini' => [
+            'wv_jump_version' => env('WV_JUMP_VERSION', 'release'),
+            'wv_jump_path' => 'pages/index/index',
+
+            'api_base_uri' => 'https://api.weixin.qq.com/',
+
+            'generatescheme' => 'wxa/generatescheme',
+            'generate_urllink' => 'wxa/generate_urllink',
+            'getuserphonenumber' => 'wxa/business/getuserphonenumber',
+        ],
+    ],
 ];

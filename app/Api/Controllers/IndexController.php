@@ -3,13 +3,14 @@
 namespace App\Api\Controllers;
 
 use App\Services\UserService;
+use App\Services\WeixinMiniService;
 use App\Services\WeixinService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
 {
-    public $not_need_login = [];
+    public $not_need_login = ['miniLogin'];
 
     /**
      * 微信公众号
@@ -76,7 +77,9 @@ class IndexController extends Controller
                 throw new \Exception($valid->errors()->first());
             }
 
-            $raw = WeixinService::miniGetInfoByCode($params['code'], $params['appid']);
+            $mini = new WeixinMiniService($params['appid']);
+
+            $raw = $mini->getInfoByCode($params['code']);
 
             $data = UserService::login('mini', $raw);
 

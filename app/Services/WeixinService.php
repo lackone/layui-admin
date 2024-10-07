@@ -248,40 +248,4 @@ class WeixinService
         $app->getAccessToken()->refresh();
         return $app->getAccessToken()->getToken();
     }
-
-    /**
-     * 小程序-根据code获取微信信息
-     * @param $code
-     * @param $id
-     * @param $rewrite
-     */
-    public static function miniGetInfoByCode($code, $id = '', $rewrite = [])
-    {
-        $app = self::getApp('mini', $id, $rewrite);
-
-        $utils = $app->getUtils();
-        $response = $utils->codeToSession($code);
-
-        if (!isset($response['openid']) || empty($response['openid'])) {
-            throw new \Exception('获取openID失败');
-        }
-
-        return $response;
-    }
-
-    /**
-     * 小程序-获取手机号
-     * @param $code
-     * @param $id
-     * @param $rewrite
-     * @return mixed
-     */
-    public static function miniGetPhoneByCode($code, $id = '', $rewrite = [])
-    {
-        $app = self::getApp('mini', $id, $rewrite);
-
-        return $app->getClient()->postJson('wxa/business/getuserphonenumber', [
-            'code' => $code,
-        ]);
-    }
 }

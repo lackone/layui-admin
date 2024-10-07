@@ -11,59 +11,57 @@ Route::group([
 
     Route::any('/', 'IndexController@index')->name('index');
 
-    //¶Ì¾ç×Ö½ÚÌø¶¯¶Ë
+    //çŸ­å‰§å­—èŠ‚è·³åŠ¨ç«¯
     Route::any('/bytedance', 'IndexController@bytedance')->name('bytedance');
 
-    //¶Ì¾ç¿ìÊÖ¶Ë
+    //çŸ­å‰§å¿«æ‰‹ç«¯
     Route::any('/kuaishou', 'IndexController@kuaishou')->name('kuaishou');
 
-    //¶Ì¾çĞ¡³ÌĞò¶Ë
+    //çŸ­å‰§å°ç¨‹åºç«¯
     Route::any('/wx_mini_program', 'IndexController@wxMiniProgram')->name('wx_mini_program');
 
-    //¶Ì¾çĞ¡³ÌĞòºóÌ¨¹ÜÀí
+    //çŸ­å‰§å°ç¨‹åºåå°ç®¡ç†
     Route::any('/back_manage', 'IndexController@backManage')->name('back_manage');
 
-    //Ğ¡³ÌĞò¿ª·¢
+    //å°ç¨‹åºå¼€å‘
     Route::any('/mini_program_dev', 'IndexController@miniProgramDev')->name('mini_program_dev');
 
-    //¹«ÖÚºÅH5¿ª·¢
+    //å…¬ä¼—å·H5å¼€å‘
     Route::any('/wx_gzh_h5_dev', 'IndexController@wxGzhH5Dev')->name('wx_gzh_h5_dev');
 
-    //ÍøÕ¾APP¿ª·¢
+    //ç½‘ç«™APPå¼€å‘
     Route::any('/website_app_dev', 'IndexController@websiteAppDev')->name('website_app_dev');
 
-    //¹«Ë¾¼ò½é
+    //å…¬å¸ç®€ä»‹
     Route::any('/company_intro', 'IndexController@companyIntro')->name('company_intro');
 
-    //ĞĞÒµĞÂÎÅ
+    //è¡Œä¸šæ–°é—»
     Route::any('/industry_news', 'IndexController@industryNews')->name('industry_news');
 
-    //°æ±¾¸üĞÂ
+    //ç‰ˆæœ¬æ›´æ–°
     Route::any('/version_update', 'IndexController@versionUpdate')->name('version_update');
 
-    //ÁªÏµÎÒÃÇ
+    //è”ç³»æˆ‘ä»¬
     Route::any('/contact_us', 'IndexController@contactUs')->name('contact_us');
 
-    //¶Ì¾çÏµÍ³
+    //çŸ­å‰§ç³»ç»Ÿ
     Route::any('/playlet_system', 'IndexController@playletSystem')->name('playlet_system');
 
-    //¿Í»§°¸Àı
+    //å®¢æˆ·æ¡ˆä¾‹
     Route::any('/customer_case', 'IndexController@customerCase')->name('customer_case');
 
-    //ÎÊ´ğÖĞĞÄ
+    //é—®ç­”ä¸­å¿ƒ
     Route::any('/question_answers', 'IndexController@questionAnswers')->name('question_answers');
 
-    //Èí¼şÖø×÷È¨
+    //è½¯ä»¶è‘—ä½œæƒ
     Route::any('/soft_copyright', 'IndexController@softCopyright')->name('soft_copyright');
 
-    //ÊÚÈ¨Ğí¿ÉĞ­ÒéÊé
+    //æˆæƒè®¸å¯åè®®ä¹¦
     Route::any('/auth_license', 'IndexController@authLicense')->name('auth_license');
 
-    //ËÑË÷
+    //æœç´¢
     Route::any('/search', 'IndexController@search')->name('search');
 
-    //ÏêÇé
+    //è¯¦æƒ…
     Route::any('/detail/{article}', 'IndexController@detail')->name('detail');
 });
-
-
