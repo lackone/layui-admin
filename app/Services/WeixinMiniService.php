@@ -6,6 +6,12 @@ class WeixinMiniService
 {
     public $app = null;
 
+    public static $paths = [
+        'generatescheme' => 'wxa/generatescheme',
+        'generate_urllink' => 'wxa/generate_urllink',
+        'getuserphonenumber' => 'wxa/business/getuserphonenumber',
+    ];
+
     /**
      * 初始化函数
      * @param $id
@@ -43,7 +49,7 @@ class WeixinMiniService
      */
     public function getPhoneByCode($code)
     {
-        return $this->app->getClient()->postJson(config('app.wx.mini.getuserphonenumber'), [
+        return $this->app->getClient()->postJson(self::$paths['getuserphonenumber'], [
             'code' => $code,
         ])->toArray(false);
     }
@@ -56,7 +62,7 @@ class WeixinMiniService
     public function getWxJumpLink($post = [])
     {
         $env_version = config('app.wx.mini.wv_jump_version');
-        $url = config('app.wx.mini.generate_urllink');
+        $url = self::$paths['generate_urllink'];
 
         $params = [
             'json' => [

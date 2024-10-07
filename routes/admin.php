@@ -69,6 +69,10 @@ Route::group([
         Route::any('/applet/save/{applet?}', 'AppletController@save')->name('applet.save');
         Route::any('/applet/delete', 'AppletController@delete')->name('applet.delete');
         Route::any('/applet/set', 'AppletController@set')->name('applet.set');
+
+        //用户列表
+        Route::any('/user/list', 'UserController@list')->name('user.list');
+        Route::any('/user/show/{user?}', 'UserController@show')->name('user.show');
     });
 });
 

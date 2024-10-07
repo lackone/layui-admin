@@ -132,12 +132,6 @@ return [
         'mini' => [
             'wv_jump_version' => env('WV_JUMP_VERSION', 'release'),
             'wv_jump_path' => 'pages/index/index',
-
-            'api_base_uri' => 'https://api.weixin.qq.com/',
-
-            'generatescheme' => 'wxa/generatescheme',
-            'generate_urllink' => 'wxa/generate_urllink',
-            'getuserphonenumber' => 'wxa/business/getuserphonenumber',
         ],
     ],
 ];
