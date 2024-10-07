@@ -5,7 +5,7 @@
         <div class="layui-card-body">
             <form class="layui-form layui-row layui-col-space16" lay-filter="{{ getDomIdKey('', 'table_filter') }}">
                 <div class="layui-form-item">
-                    @include('component.text', ['label' => 'sn', 'name' => 'sn', 'is_search' => 1])
+                    @include('component.text', ['label' => 'SN', 'name' => 'sn', 'is_search' => 1])
 
                     @include('component.text', ['label' => '账号', 'name' => 'account', 'is_search' => 1])
 

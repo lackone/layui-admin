@@ -4,7 +4,7 @@
     <form class="layui-form" action="">
         @csrf
 
-        @include('component.text_raw', ['label' => 'sn', 'name' => 'sn', 'value' => $user['sn'], 'block' => 1])
+        @include('component.text_raw', ['label' => 'SN', 'name' => 'sn', 'value' => $user['sn'], 'block' => 1])
 
         @include('component.text_raw', ['label' => '账号', 'name' => 'account', 'value' => $user['account'], 'block' => 1])
 
