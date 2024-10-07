@@ -60,19 +60,32 @@
 <!-- 框 架 初 始 化 -->
 <script>
     var load_index;
-    layui.use(['admin', 'jquery', 'popup', 'layer', 'laytpl', 'table'], function () {
+    layui.use(['admin', 'jquery', 'popup', 'layer', 'laytpl', 'table', 'util'], function () {
         var admin = layui.admin;
         var popup = layui.popup;
         var $ = layui.jquery;
         var layer = layui.layer;
         var laytpl = layui.laytpl;
         var table = layui.table;
+        var util = layui.util;
 
         // yml | json | api
         admin.setConfigurationPath("{{ route('admin.config') }}");
 
         // 渲染
         admin.render();
+
+        // 基本资料
+        util.on('lay-on', {
+            'basic-info': function () {
+                layer.open({
+                    title: '编辑 - id:' + "{{ session('admin_id') }}",
+                    type: 2,
+                    area: ['80%', '80%'],
+                    content: '{{ route('admin.admin.save', session('admin_id')) }}'
+                });
+            }
+        })
 
         // 注销
         admin.logout(function () {
