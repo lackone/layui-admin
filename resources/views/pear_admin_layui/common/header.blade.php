@@ -25,8 +25,7 @@
             <a class="layui-icon layui-icon-username" href="javascript:;"></a>
             <!-- 功 能 菜 单 -->
             <dl class="layui-nav-child">
-                <dd><a user-menu-url="{{ route('admin.user.save', session('admin_id')) }}" user-menu-id="info"
-                       user-menu-title="基本资料" style="cursor:pointer">基本资料</a></dd>
+                <dd><a lay-on="basic-info" style="cursor:pointer">基本资料</a></dd>
                 <dd><a href="javascript:void(0);" class="logout">注销登录</a></dd>
             </dl>
         </li>

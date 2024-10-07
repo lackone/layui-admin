@@ -30,10 +30,10 @@ Route::group([
         Route::any('/welcome', 'IndexController@welcome')->name('welcome');
 
         //用户列表
-        Route::any('/user/list', 'UserController@list')->name('user.list');
-        Route::any('/user/save/{admin?}', 'UserController@save')->name('user.save');
-        Route::any('/user/delete', 'UserController@delete')->name('user.delete');
-        Route::any('/user/set_role/{admin?}', 'UserController@setRole')->name('user.set_role');
+        Route::any('/admin/list', 'AdminController@list')->name('admin.list');
+        Route::any('/admin/save/{admin?}', 'AdminController@save')->name('admin.save');
+        Route::any('/admin/delete', 'AdminController@delete')->name('admin.delete');
+        Route::any('/admin/set_role/{admin?}', 'AdminController@setRole')->name('admin.set_role');
 
         //角色列表
         Route::any('/role/list', 'RoleController@list')->name('role.list');

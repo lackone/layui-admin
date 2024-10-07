@@ -69,7 +69,7 @@
             // 创建渲染实例
             table.render({
                 elem: '#{{ getDomIdKey('', 'table') }}',
-                url: '{{ route('admin.user.list') }}',
+                url: '{{ route('admin.admin.list') }}',
                 toolbar: '#{{ getDomIdKey('', 'toolbar') }}',
                 lineStyle: 'height: 98px;',
                 cols: [[
@@ -188,7 +188,7 @@
                                         title: '添加',
                                         type: 2,
                                         area: ['80%', '80%'],
-                                        content: '{{ route('admin.user.save') }}'
+                                        content: '{{ route('admin.admin.save') }}'
                                     });
                                     break;
                                 case '{{ getDomIdKey('', 'update') }}':
@@ -199,7 +199,7 @@
                                         title: '编辑 - id:' + data[0].id,
                                         type: 2,
                                         area: ['80%', '80%'],
-                                        content: '{{ route('admin.user.save') }}/' + data[0].id
+                                        content: '{{ route('admin.admin.save') }}/' + data[0].id
                                     });
                                     break;
                                 case '{{ getDomIdKey('', 'delete') }}':
@@ -210,7 +210,7 @@
                                         return v.id
                                     })
                                     layer.confirm('真的删除么?', function (index) {
-                                        $.post("{{ route('admin.user.delete') }}", {
+                                        $.post("{{ route('admin.admin.delete') }}", {
                                             id: ids
                                         }, function (res) {
                                             if (res.code == 200) {
@@ -303,7 +303,7 @@
                 switch (obj.event) {
                     case 'custom_export':
                         var field = form.val('{{ getDomIdKey('', 'table_filter') }}');
-                        location.href = '{{ route('admin.user.list') }}?export=1&' + $.param(field);
+                        location.href = '{{ route('admin.admin.list') }}?export=1&' + $.param(field);
                         break;
                 }
             });
@@ -326,7 +326,7 @@
                         title: '编辑 - id:' + data.id,
                         type: 2,
                         area: ['80%', '80%'],
-                        content: '{{ route('admin.user.save') }}/' + data.id
+                        content: '{{ route('admin.admin.save') }}/' + data.id
                     });
                 } else if (obj.event === 'more') {
                     // 更多 - 下拉菜单
@@ -343,7 +343,7 @@
                         click: function (menudata) {
                             if (menudata.id === '{{ getDomIdKey('', 'del') }}') {
                                 layer.confirm('真的删除行 [id: ' + data.id + '] 么', function (index) {
-                                    $.post('{{ route('admin.user.delete') }}', {
+                                    $.post('{{ route('admin.admin.delete') }}', {
                                         id: data.id
                                     }, function (res) {
                                         if (res.code == 200) {
@@ -359,7 +359,7 @@
                                     title: '设置角色 - id:' + data.id,
                                     type: 2,
                                     area: ['50%', '50%'],
-                                    content: '{{ route('admin.user.set_role') }}/' + data.id
+                                    content: '{{ route('admin.admin.set_role') }}/' + data.id
                                 });
                             }
                         },

@@ -4,7 +4,7 @@ namespace App\Admin\Exports;
 
 use App\Models\Admin;
 
-class UserExport extends ExportXls
+class AdminExport extends ExportXls
 {
     /**
      * 映射字段

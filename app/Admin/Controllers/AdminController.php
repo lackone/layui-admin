@@ -9,9 +9,9 @@ use App\Models\AdminRole;
 use App\Models\AdminRoleAssoc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Admin\Exports\UserExport;
+use App\Admin\Exports\AdminExport;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * 用户列表
@@ -51,7 +51,7 @@ class UserController extends Controller
 
             if ($params['export']) {
                 $now = date('YmdHis');
-                return (new UserExport($query))->download("user_{$now}");
+                return (new AdminExport($query))->download("admin_{$now}");
             }
 
             $list = $query->paginate($params['limit'] ?? 10);
@@ -59,7 +59,7 @@ class UserController extends Controller
             return toList($list);
         }
 
-        return view('user.list', compact('params'));
+        return view('admin.list', compact('params'));
     }
 
     /**
@@ -105,7 +105,7 @@ class UserController extends Controller
             }
         }
 
-        return view('user.save', compact('admin'));
+        return view('admin.save', compact('admin'));
     }
 
     /**
@@ -143,7 +143,7 @@ class UserController extends Controller
 
         $role_ids = RBACService::roleIdsById($admin['id']);
 
-        return view('user.set_role', compact('admin', 'role_list', 'role_ids'));
+        return view('admin.set_role', compact('admin', 'role_list', 'role_ids'));
     }
 
     /**
