@@ -2,7 +2,7 @@
     <label class="layui-form-label">{{ $label }}</label>
     <div class="layui-input-inline">
         <select name="{{ $name }}" lay-search="">
-            <option value="0">无</option>
+            <option value="">无</option>
             @if($list)
                 @foreach($list as $k => $v)
                     <option value="{{ $v['id'] }}" {{ $v['id'] == $value ? 'selected' : '' }}>{{ $v[$title] }}</option>

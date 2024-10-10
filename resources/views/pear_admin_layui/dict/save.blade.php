@@ -4,9 +4,9 @@
     <form class="layui-form" action="">
         @csrf
 
-        @include('component.text', ['label' => '中文名', 'name' => 'name', 'value' => $dict['name'], 'verify' => 'required'])
+        @include('component.text', ['label' => '中文名', 'name' => 'name', 'value' => $dict['name'], 'verify' => 'required', 'block' => 1])
 
-        @include('component.text', ['label' => '编码', 'name' => 'code', 'value' => $dict['code'], 'verify' => 'required'])
+        @include('component.text', ['label' => '编码', 'name' => 'code', 'value' => $dict['code'], 'verify' => 'required', 'block' => 1])
 
         @include('component.radio', ['label' => '类型', 'name' => 'type', 'list' => \App\Models\Dict::$typeList, 'value' => $dict['type']])
 
@@ -16,7 +16,7 @@
 
         @include('component.radio', ['label' => '状态', 'name' => 'status', 'list' => \App\Models\Dict::$statusList, 'value' => $dict['status']])
 
-        @include('component.text', ['label' => '排序', 'name' => 'sort', 'value' => $dict['sort']])
+        @include('component.text', ['label' => '排序', 'name' => 'sort', 'value' => $dict['sort'], 'block' => 1])
 
         @include('component.submit')
     </form>

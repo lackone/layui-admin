@@ -4,7 +4,7 @@
     <form class="layui-form" action="">
         @csrf
 
-        @include('component.text', ['label' => '角色名', 'name' => 'name', 'value' => $role['name'], 'verify' => 'required'])
+        @include('component.text', ['label' => '角色名', 'name' => 'name', 'value' => $role['name'], 'verify' => 'required', 'block' => 1])
 
         @include('component.ztree', ['label' => '权限', 'name' => 'auth_ids', 'list' => $auth_list])
 

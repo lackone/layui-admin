@@ -4,9 +4,9 @@
     <form class="layui-form" action="">
         @csrf
 
-        @include('component.text', ['label' => '菜单名称', 'name' => 'title', 'value' => $auth['title'], 'verify' => 'required'])
+        @include('component.text', ['label' => '菜单名称', 'name' => 'title', 'value' => $auth['title'], 'verify' => 'required', 'block' => 1])
 
-        @include('component.text', ['label' => '菜单URL', 'name' => 'name', 'value' => $auth['name'], 'verify' => 'required'])
+        @include('component.text', ['label' => '菜单URL', 'name' => 'name', 'value' => $auth['name'], 'verify' => 'required', 'block' => 1])
 
         @include('component.radio', ['label' => '类型', 'name' => 'type', 'list' => \App\Models\AdminAuth::$typeList, 'value' => $auth['type']])
 
@@ -16,7 +16,7 @@
 
         @include('component.radio', ['label' => '状态', 'name' => 'status', 'list' => \App\Models\AdminAuth::$statusList, 'value' => $auth['status']])
 
-        @include('component.text', ['label' => '排序', 'name' => 'sort', 'value' => $auth['sort']])
+        @include('component.text', ['label' => '排序', 'name' => 'sort', 'value' => $auth['sort'], 'block' => 1])
 
         @include('component.submit')
     </form>

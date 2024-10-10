@@ -4,21 +4,21 @@
     <form class="layui-form" action="">
         @csrf
 
-        @include('component.text', ['label' => '文章标题', 'name' => 'title', 'value' => $article['title'], 'verify' => 'required'])
+        @include('component.text', ['label' => '文章标题', 'name' => 'title', 'value' => $article['title'], 'verify' => 'required', 'block' => 1])
 
-        @include('component.text', ['label' => '子标题', 'name' => 'sub_title', 'value' => $article['sub_title']])
+        @include('component.text', ['label' => '子标题', 'name' => 'sub_title', 'value' => $article['sub_title'], 'block' => 1])
 
-        @include('component.text', ['label' => '编码', 'name' => 'code', 'value' => $article['code']])
+        @include('component.text', ['label' => '编码', 'name' => 'code', 'value' => $article['code'], 'block' => 1])
 
         @include('component.search_select_multi', ['label' => '分类ID', 'name' => 'category_id', 'list' => $category_tree, 'title' => 'name', 'value' => $article['category_id']])
 
-        @include('component.text', ['label' => '作者', 'name' => 'author', 'value' => $article['author']])
+        @include('component.text', ['label' => '作者', 'name' => 'author', 'value' => $article['author'], 'block' => 1])
 
         @include('component.single_image', ['label' => '文章banner', 'name' => 'banner', 'value' => $article['banner']])
 
         @include('component.wangeditor', ['label' => '内容', 'name' => 'context', 'value' => $article['context'], 'block' => 1])
 
-        @include('component.text', ['label' => '排序(越小越前)', 'name' => 'sort', 'value' => $article['sort']])
+        @include('component.text', ['label' => '排序(越小越前)', 'name' => 'sort', 'value' => $article['sort'], 'block' => 1])
 
         @include('component.radio', ['label' => '置顶', 'name' => 'is_hot', 'list' => \App\Models\Article::$isHotList, 'value' => $article['is_hot']])
 
