@@ -80,4 +80,23 @@ class WeixinMiniService
 
         return $res;
     }
+
+    /**
+     * 获取AccessToken
+     * @return mixed
+     */
+    public function getAccessToken()
+    {
+        return $this->app->getAccessToken()->getToken();
+    }
+
+    /**
+     * 刷新AccessToken并获取
+     * @return mixed
+     */
+    public function getRefreshAccessToken()
+    {
+        $this->app->getAccessToken()->refresh();
+        return $this->app->getAccessToken()->getToken();
+    }
 }
