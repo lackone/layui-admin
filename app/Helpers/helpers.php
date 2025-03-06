@@ -279,7 +279,7 @@ if (!function_exists('adminIsAjax')) {
     {
         $request = request();
 
-        if ($request->header('table') || $request->input('export')) {
+        if ($request->header('pear-admin-table') || $request->input('export')) {
             return true;
         }
 

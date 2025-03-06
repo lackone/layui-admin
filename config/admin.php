@@ -11,11 +11,11 @@ return [
 
     'default_login_banner' => '/pear_admin_layui/admin/images/banner.png',
 
-    'default_login_title' => '小风浪后台管理系统',
+    'default_login_title' => '后台管理系统',
 
     'default_login_sub_title' => '以 超 乎 想 象 的 效 率 提 升 运 营 转 化',
 
-    'default_footer' => 'Copyright © 2024 小风浪后台管理系统',
+    'default_footer' => 'Copyright © 2025 后台管理系统',
 
     //路由相关配置
     'route' => [
@@ -28,7 +28,7 @@ return [
     'pear_admin_layui_config' => [
         'logo' => [
             //网站名称
-            'title' => '小风浪后台管理系统',
+            'title' => '后台管理系统',
             //网站图标
             'image' => '',
         ],

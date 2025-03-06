@@ -109,7 +109,7 @@
 
         // 全局设置
         table.set({
-            headers: {'table': 'layui'},
+            headers: {'pear-admin-table': 'pear-admin-table'},
             request: {
                 pageName: 'page',
                 limitName: 'limit'
