@@ -26,5 +26,7 @@ layui.config({
 	nprogress: "extends/nprogress",
 	echarts: "extends/echarts",
 	echartsTheme: "extends/echartsTheme",
-	yaml: "extends/yaml"
+	yaml: "extends/yaml",
+    uploadMore: "uploadMore/uploadMore",
+    sortable: "uploadMore/sortable"
 }).use([], function () { });

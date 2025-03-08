@@ -44,7 +44,7 @@
                     return layer.msg('上传失败');
                 }
                 $('#{{ getDomIdKey($name, 'single_image_text') }}').html(''); // 置空上传失败的状态
-                $("input[name='{{ $name }}']").val(res.data.path);
+                $("#{{ getDomIdKey($name, 'single_image_vals') }} input[name='{{ $name }}']").val(res.data.path);
             },
             error: function () {
                 // 演示失败状态，并实现重传

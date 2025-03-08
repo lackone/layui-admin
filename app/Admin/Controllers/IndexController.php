@@ -131,6 +131,19 @@ class IndexController extends Controller
                     'data' => [['url' => $path]],
                 ]);
             }
+            if ($request->header('uploadMore')) {
+                return response()->json([
+                    'code' => 0,
+                    'data' => [
+                        'url' => $path,
+                        'name' => $request->file->getClientOriginalName(),
+                        'mime_type' => @mime_content_type($request->file->getRealPath()),
+                        'ext' => $request->file->extension(),
+                        'size' => $request->file->getSize(),
+                    ],
+                    'msg' => 'success',
+                ]);
+            }
 
             return success([
                 'ext' => $request->file->extension(),

@@ -35,13 +35,14 @@ class ApiLoginCheck
             return error('登录超时，请重新登录');
         }
 
-        if ($user_info &&
-            $user_info['expire_time'] > (time() + config('app.user_token.be_expire_duration'))
-        ) {
-            try {
-                UserService::delayToken($token);
-            } catch (\Exception $e) {
-                return error('登录过期');
+        if ($user_info) {
+            $be_expire_duration = config('app.user_token.be_expire_duration');
+            if (($user_info['expire_time'] - time()) < $be_expire_duration) {
+                try {
+                    UserService::delayToken($token);
+                } catch (\Exception $e) {
+                    return error('登录过期');
+                }
             }
         }
 
